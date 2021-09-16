@@ -3,6 +3,33 @@
 <body>
 <h1>Hello World</h1>
 <p>I'm hosted with GitHub Pages.</p>
- <iframe src="test.html" height="200" width="300" title="Iframe Example"></iframe> 
+ 
+ <iframe src="./DSC640/test.html" id="child-iframe" height="325" width="1025"></iframe>
+
+
 </body>
+<script crossorigin="anonymous">
+	function init(){
+			//let iframe = document.querySelector("#child-iframe");
+		
+		iframe = document.getElementById("child-iframe")
+
+		
+		console.log(iframe.contentWindow.document)
+
+
+		iframe.addEventListener('load', function() {
+
+			
+			
+			//iframe.style.height = "425px";
+			//iframe.style.width = "625px";
+			
+
+		});	
+
+	};
+	
+	window.setTimeout(init,1000);
+</script>
 </html>
