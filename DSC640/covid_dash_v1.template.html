@@ -1,3 +1,4 @@
+<!-- https://www.w3schools.com/howto/howto_js_tabs.asp -->
 <!DOCTYPE html>
 <html>
 <body>
@@ -5,10 +6,43 @@
 <p>Prototype Visualizations for measuring the current and historical effects of COVID</p>
 <p>Measuring COVID-19 Community Prevalence by mapping new the number of new confirmed cases per 100,000 people</p>
 
-<div id='covid_graph_wrapper_1'>$$covid_dashboard_1$$</div>
-<div id='covid_graph_wrapper_2'>$$covid_dashboard_2$$</div>
-<div id='covid_graph_wrapper_3'>$$covid_dashboard_3$$</div>
-<div id='covid_graph_wrapper_4'>$$covid_dashboard_4$$</div>
+<div class="tab">
+  <button class="tablinks" onclick="openCity(event, 'London')">London</button>
+  <button class="tablinks" onclick="openCity(event, 'Paris')">Paris</button>
+  <button class="tablinks" onclick="openCity(event, 'Tokyo')">Tokyo</button>
+</div>
+
+<!-- Tab content -->
+<div id="London" class="tabcontent">
+	<table>
+		<tr>
+			<td>
+				<div id='covid_graph_wrapper_1'>$$covid_dashboard_1$$</div>				
+			</td>
+			<td>
+				<div id='covid_graph_wrapper_2'>$$covid_dashboard_2$$</div>
+			</td>
+		</tr>
+	</table>
+</div>
+
+<div id="Paris" class="tabcontent">
+	<table>
+		<tr>
+			<td>
+				<div id='covid_graph_wrapper_3'>$$covid_dashboard_3$$</div>				
+			</td>
+			<td>
+				<div id='covid_graph_wrapper_4'>$$covid_dashboard_4$$</div>
+			</td>
+		</tr>
+	</table>
+</div>
+
+<div id="Tokyo" class="tabcontent">
+  <h3>Tokyo</h3>
+  <p>Tokyo is the capital of Japan.</p>
+</div>
 <div>
 	<p>Sources:</p>
  <li>
