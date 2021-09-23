@@ -17,12 +17,14 @@
 <script src="https://cdn.bokeh.org/bokeh/release/bokeh-mathjax-2.4.0.min.js"></script>
 
 <div class="tab">
-  <button class="tablinks" onclick="openCity(event, 'Current')">Current</button>
+  <button class="tablinks" onclick="openCity(event, 'Vaccination')">Vaccinations</button>
+  <button class="tablinks" onclick="openCity(event, 'Confirmed')">Confirmed</button>
+  <button class="tablinks" onclick="openCity(event, 'Deaths')">Deaths</button>
   <button class="tablinks" onclick="openCity(event, 'Historical')">Explore the Spread</button>
   
 </div>
 <!-- Tab content -->
-<div id="Current" class="tabcontent" style="display:block">
+<div id="Vaccination" class="tabcontent" style="display:block">
 
 	<table>
 		<tr>
@@ -62,20 +64,44 @@
 
 				</table>
 				<div>
-							<div id='covid_graph_wrapper_9'>$$vax_full_30day$$</div>				
-							<div id='covid_graph_wrapper_10'>$$vax_partial_30day$$</div>				
+							<div id='vax_full_30day'>$$vax_full_30day$$</div>				
+							<div id='vax_partial_30day'>$$vax_partial_30day$$</div>				
 				</div>
 			</td>
 		</tr>
-		<tr>
+	</table>
+</div>
+<div id="Confirmed" class="tabcontent">
+<table>
+	<tr>
 			<td>
-				<div id='covid_graph_wrapper_1'>$$confirm_latest$$</div>				
+ 			  
+ 			  	<div>States with the highest COVID Cases</div>
+					<div id='total_confirmed_percent'>$$total_confirmed_percent$$</div>
+				
+ 			  <div id='states_highests_new_cases'>$$states_highests_new_cases$$</div>
+			  </td>
+				
+
+			<td>
+				<div id='confirm_latest'>$$confirm_latest$$</div>				
 			</td>
+
+
+		</tr>
+</table>
+</div>
+
+<div id="Deaths" class="tabcontent" >
+	<table>
+			<tr>
 			<td>
-				<div id='covid_graph_wrapper_2'>$$death_latest$$</div>
+				<div id='death_latest'>$$death_latest$$</div>
 			</td>
 		</tr>
 	</table>
+
+
 </div>
 
 <div id="Historical" class="tabcontent">
@@ -85,7 +111,7 @@
 				<div id='covid_graph_wrapper_3'>$$confirm_historical$$</div>				
 			</td>
 			<td>
-				<div id='covid_graph_wrapper_4'>$$death_historical$$</div>
+				<div id='death_historical'>$$death_historical$$</div>
 			</td>
 		</tr>
     <tr>

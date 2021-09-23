@@ -33,3 +33,20 @@
   border: 1px solid #ccc;
   border-top: none;
 } 
+
+#total_confirmed_percent {
+  /* height: 512px; */
+  height: 256px;
+  overflow: scroll;
+  /* float: right; */
+
+}
+
+
+
+#total_confirmed_percent tr:nth-child(odd) {
+  background-color:#f2f2f2;
+
+  
+
+}
