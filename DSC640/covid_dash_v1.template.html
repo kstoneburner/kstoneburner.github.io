@@ -26,12 +26,12 @@
   
 </div>
 <!-- Tab content -->
-<div id="Vaccination" class="tabcontent" >
+<div id="Vaccination" class="tabcontent" style="display:block;">
 
 	<table>
 		<tr>
 			<td>
-				<div id='covid_graph_wrapper_1'>$$vaccine_us_current$$</div>				
+				<div id='covid_graph_wrapper_1' >$$vaccine_us_current$$</div>				
 			</td>
 			<td>
 				<table>
@@ -89,7 +89,7 @@
 </table>
 </div>
 
-<div id="Deaths" class="tabcontent" style="display:block; background-color: #ccc">
+<div id="Deaths" class="tabcontent">
 	<table>
 			<tr>
 			<td>
@@ -106,18 +106,29 @@
 </div>
 
 <div id="Historical" class="tabcontent">
+<div class="dropdown">
+  <button class="dropbtn">Select Visualization...</button>
+  <div class="dropdown-content">
+    <div onclick="showHistorical(event, 'confirm_historical')">Confirmed Cases Spread</div>
+    <div onclick="showHistorical(event, 'death_historical')">Death Cases Spread</div>
+    <div onclick="showHistorical(event, 'confirm_animation')">Confirmed Case Animation</div>
+  </div>
+</div>
 	<table>
 		<tr>
 			<td>
-				<div id='covid_graph_wrapper_3'>$$confirm_historical$$</div>				
+				<div id='confirm_historical' class='dd_historical' style='display: inline;'>$$confirm_historical$$</div>				
 			</td>
 			<td>
-				<div id='death_historical'>$$death_historical$$</div>
+				<div id='death_historical' class='dd_historical'>$$death_historical$$</div>
+			</td>
+			<td>
+				<div id='confirm_animation' class='dd_historical' style='display: unloaded;'>Click to Load....</div>
 			</td>
 		</tr>
     <tr>
       <td>
-        <img src="confirm_100k_history.gif">
+        <!-- <img src="confirm_100k_history.gif"> -->
       </td>
     </tr>
 	</table>
