@@ -102,3 +102,16 @@
 #total_confirmed_percent tr:nth-child(odd) {  background-color:#f2f2f2;}
 
 #confirm_animation {font-size: 100pt}
+
+#confirm_historical {
+  outline: 3px solid #4CAF50;
+}
+#death_historical {
+  outline: 3px solid #4CAF50;
+}
+
+.drag_slider{
+  margin-top: 20px ;
+  margin-bottom: 20px;
+  
+}

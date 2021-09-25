@@ -5,7 +5,7 @@
 <h3>COVID-19 Dashboard</h3>
 <!-- <p>Measuring COVID-19 Community Prevalence by mapping new the number of new confirmed cases per 100,000 people</p> -->
 <!-- <button class="tablinks"><img src="confirm_100k_thumb.gif" height="30", width="60"></button> -->
-
+<meta charset="utf-8">
 
 <link rel="stylesheet" href="css/dash.css"> 
 
@@ -112,7 +112,9 @@
     <div onclick="showHistorical(event, 'confirm_historical')">Confirmed Cases Spread</div>
     <div onclick="showHistorical(event, 'death_historical')">Death Cases Spread</div>
     <div onclick="showHistorical(event, 'confirm_animation')">Confirmed Case Animation</div>
+    <div onclick="showHistorical(event, 'death_animation')">New Deaths Animation</div>
   </div>
+  <div class='drag_slider '>Drag the Slider</div>
 </div>
 	<table>
 		<tr>
@@ -125,12 +127,10 @@
 			<td>
 				<div id='confirm_animation' class='dd_historical' style='display: unloaded;'>Click to Load....</div>
 			</td>
+			<td>
+				<div id='death_animation' class='dd_historical' style='display: unloaded;'>Click to Load....</div>
+			</td>
 		</tr>
-    <tr>
-      <td>
-        <!-- <img src="confirm_100k_history.gif"> -->
-      </td>
-    </tr>
 	</table>
 </div>
 
@@ -147,7 +147,7 @@
 	 <a href="https://www.census.gov/data/datasets/time-series/demo/popest/2010s-counties-detail.html" target="_blank" rel="noopener noreferrer">U.S. Census Bureau: County Population by Characteristics: 2010-2019</a>
  </li>
  <li>
-	 <a href="https://github.com/kstoneburner/DSC/blob/master/DSC640/DSC640_Dashboard_COVID_v1.ipynb" target="_blank" rel="noopener noreferrer">Juypter Notebook Code HERE 1</a>
+	 <a href="https://github.com/kstoneburner/DSC/blob/master/DSC640/DSC640_Dashboard_COVID_v1.ipynb" target="_blank" rel="noopener noreferrer">Juypter Notebook Code HERE!</a>
  </li>
 
 </div>

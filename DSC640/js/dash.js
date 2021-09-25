@@ -1,4 +1,5 @@
 load_confirm = true;
+load_death = true;
 function openCity(evt, cityName) {
   // Declare all variables
   var i, tabcontent, tablinks;
@@ -45,11 +46,43 @@ function showHistorical(evt, id){
       //img.src="confirm_100k_thumb.gif";
       thisElem.innerHTML = "";
       thisElem.appendChild(img);
-      
-      
 
     }//*** End Load Confirem
  }//*** End Check confirm_animation
+
+ if (id == 'death_animation'){
+    thisElem = document.getElementById(id);
+    if (load_confirm) {
+      load_death=false;
+
+       
+      img = document.createElement("img");
+      //adds image to the image element
+      img.src="confirm_100k_history_deaths.gif";
+      thisElem.innerHTML = "";
+      thisElem.appendChild(img);
+
+    }//*** End Load Confirem
+ }//*** End Check confirm_animation
+
+ if ( (id == 'confirm_animation') || (id == 'death_animation') ){
+    // Get all elements with class="drag_slider" and hide them
+    dd_content = document.getElementsByClassName("drag_slider");
+    for (i = 0; i < dd_content.length; i++) {
+      dd_content[i].style.display = "none";
+    }
+
+ }
+ else {
+    // Get all elements with class="drag_slider" and hide them
+    dd_content = document.getElementsByClassName("drag_slider");
+    for (i = 0; i < dd_content.length; i++) {
+      dd_content[i].style.display = "block";
+    }
+
+ }
+  
+
 
  document.getElementById(id).style.display = "inline";
 
