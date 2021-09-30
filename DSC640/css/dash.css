@@ -14,12 +14,32 @@
   cursor: pointer;
   padding: 14px 16px;
   transition: 0.3s;
+
+  color: #fff !important;
+  /* text-transform: uppercase; */
+  text-decoration: none;
+  background: #4CAF50;
+  /* padding: 20px; */
+  border-radius: 30px;
+  display: inline-block;
+  border: none;
+   transition: all 0.4s ease 0s; 
+}
+
+.tab button:hover {
+  background: #434343;
+  /* letter-spacing: 1px; */
+  -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+  -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+  box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
+  /* transition: all 0.4s ease 0s; */
 }
 
 /* Change background color of buttons on hover */
-.tab button:hover {
+/* .tab button:hover {
   background-color: #ddd;
 }
+*/
 
 /* Create an active/current tablink class */
 .tab button.active {
