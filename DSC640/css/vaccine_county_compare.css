@@ -6,6 +6,7 @@
   max-width: 90%;
   position: relative;
   margin: auto;
+  outline : 1px solid black;
 }
 
 /* Hide the images by default */
