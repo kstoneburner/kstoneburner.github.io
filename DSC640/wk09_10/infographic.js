@@ -1,46 +1,122 @@
-const sleep = (ms) => {
-  return new Promise(resolve => setTimeout(resolve, ms))
-}
+
+
 function init(){
 	//loadJSON)
 	//console.log(window.location)
-	//console.log(window.location.href)
-sleep(1000).then(() => {
-  	alert(infographic_left)
-})
+	//console.log(window.location.href.replace("infographic.html","infographic_left.json"));
+    //filename = window.location.href.replace("infographic.html","infographic_left.json");
+    //loadJSON(filename);
+    //console.log(infographic_left);
+    
+    var slider = document.getElementById("myRange");
+    
+    if (slider == null) {
+        console.log("Waiting till elements load");
+        setTimeout(() => {  init() }, 100);
+        return;    
+    }
+    slider.max = (Object.keys(infographic_left).length - 1) 
+    var output = document.getElementById("demo");
+    output.innerHTML = Object.keys(infographic_left)[slider.value];
+    index = Object.keys(infographic_left)[slider.value];
+    console.log(infographic_left[index]);
 
+    //*** Build Table Container
+    var table = document.createElement("table");
+    var top_obj = infographic_left[index];
+    var tr = document.createElement("tr");
+    
+    for (label in top_obj[(Object.keys(top_obj))[0]]){
+        var th = document.createElement("th");    
+        if (label ==  "tier"){
+            label = "Tier";
+        }
+        if (label ==  "case_100k_avg"){
+            label = "Confirmed</br>100k";
+        }
+        if (label ==  "death_100k_avg"){
+            label = "Deaths</br>100k";
+        }
+
+        if (label ==  "relative_confirm_100k"){
+            label = "Relative</br>Confirm %";
+        }
+
+        if (label ==  "relative_death_100k"){
+            label = "Relative</br>Death %";
+        }
+
+        th.className = label;
+        th.innerHTML = label;
+
+        tr.appendChild(th);
+    }
+    table.appendChild(tr);
+
+
+    for (row in top_obj){
+        //console.log(row);
+        //console.log(top_obj[row]);
+        var tr = document.createElement("tr");
+        tr.className = row;
+
+        for (elem in top_obj[row]) {
+
+            var td = document.createElement("td");
+
+            td.className = elem;
+            td.id = row + "_" + elem;
+
+            value = top_obj[row][elem];
+
+            if (elem == 'tier'){
+                value = value.replace("total_","")
+                value += "%"                
+            }
+
+            td.innerHTML = value;
+
+            tr.appendChild(td)
+        }//*** END each elem
+
+        table.appendChild(tr)
+
+    }//*** END each row
+
+
+    document.getElementById("table_container").appendChild(table);
 }
 
+function handleSlider() {
 
- function loadJSON(filename,callback) {   
- 	
-    var xobj = new XMLHttpRequest();
-        xobj.overrideMimeType("application/json");
-    xobj.open('GET', filename, true); // Replace 'appDataServices' with the path to your file
+    var slider = document.getElementById("myRange");
+    var output = document.getElementById("demo");
+    index = Object.keys(infographic_left)[slider.value];
+    output.innerHTML = index; // Display the default slider value
+    
+    var top_obj = infographic_left[index];
+    
+    var table = document.getElementById("table_container")
 
-    xobj.onreadystatechange = function () {
-          if (xobj.readyState == 4 && xobj.status == "200") {
-            // Required use of an anonymous callback as .open will NOT return a value but simply returns undefined in asynchronous mode
-            callback(processJSON(xobj.responseText));
-          }
-    };
-    xobj.send(null);  
- }
+    for (row in top_obj){
+        
+        for (elem in top_obj[row]){
 
- function processJSON(inputJSON) {
+            value = top_obj[row][elem]
+            if (elem == 'tier'){
+                value = value.replace("total_","")
+                value += "%"                
+            }
 
- 	alert(inputJSON);
 
- }
+            this_DOM = document.getElementById(row + "_" + elem)
+            this_DOM.innerHTML = value;
+            console.log(elem)
 
-async function getQuote(input_path) {
-  
-try {
+        }//*** END each Elem in row
 
-     const response = await fetch(path) ;
-     const data = await response.json();
-     console.log({data});
-  } catch (error) {
-     console.log(error);
-      }
-  }
+
+    }//*** End Each row in top OBJ
+
+}//*** END handleSlider
+

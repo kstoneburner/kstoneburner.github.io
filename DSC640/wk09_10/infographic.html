@@ -1,15 +1,19 @@
 <!-- https://dev.to/drews256/ridiculously-easy-row-and-column-layouts-with-flexbox-1k01-->
 <!DOCTYPE html>
 <html lang="en">
+<link rel="stylesheet" href="infographic.css">
+<script src="infographic.js" ></script>
+<script src='infographic_left.js'></script>
 <meta charset="utf-8">
-<body onload="init()">
-	<!-- <link rel="stylesheet" href="css/vaccine_state_results.css">  -->
-	<script> src="infographic.js"></script>
-	<script> src='infographic_left.js'</script>
+<body>
+
+
+
+	 
 
 
 	<script>
-		//init()
+		init()
 	</script>
 	<div style='background-color: #644ac6; 
 				width: 100%; 
@@ -38,6 +42,11 @@
 	</h2>
 	</div>
 	<div id='main_container'>
+		<div id="demo">X</div>
+		<div class="slidecontainer">
+			<input type="range" min="0" max="100" value="0" class="slider" id="myRange" onload="buildSlider()" oninput="handleSlider()" >
+		</div>
+		<div id="table_container"></div>
 	</div>
 
 
