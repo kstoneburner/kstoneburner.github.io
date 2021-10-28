@@ -73,5 +73,5 @@
 .tot_deaths { display : none }
 .New_Confirm { display : none }
 .New_Deaths { display : none }
-.case_100k_avg_daily { display : inline }
-.death_100k_avg_daily { display : inline }
+.case_100k_avg_daily { display : none }
+.death_100k_avg_daily { display : none }

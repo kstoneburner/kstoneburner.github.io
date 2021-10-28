@@ -16,15 +16,16 @@ function init(){
         return;    
     }
 
-    slider.max = (parseInt(Object.keys(infographic_left).length) + parseInt(Object.keys(infographic_right).length) ); 
- 	slider.max -= 3;
-    var output = document.getElementById("demo");
+    //slider.max = (parseInt(Object.keys(infographic_left).length) + parseInt(Object.keys(infographic_right).length) ); 
+    slider.max = (parseInt(Object.keys(infographic_left).length)  ); 
+ 	slider.max -= 1;
+    var output = document.getElementById("header");
     index = Object.keys(infographic_left)[slider.value]
     output.innerHTML = index;
-    output.innerHTML = "Date: " + index + "</br>Days: " +( parseInt(slider.value+1)) ; 
+    output.innerHTML = "Date: " + index + "</br>Day: " +( parseInt(slider.value+1)) ; 
     
 
-    const info_gfk_types = ['left','right'];
+    const info_gfk_types = ['left'];
 
     for (var infographic_type in info_gfk_types) {
     	
@@ -44,7 +45,7 @@ function init(){
 
 
 	    
-
+	    /*
 		var div = document.createElement("div");
 
 		if (info_gfk_types[infographic_type] == 'left'){
@@ -55,7 +56,7 @@ function init(){
 			div.innerHTML = "Post Surge:</br>" + Object.keys(info_OBJ)[0] + " - " + Object.keys(info_OBJ)[Object.keys(info_OBJ).length-1];
 		}
 	    div.className = 'header';
-	    
+	    */
 	    
 
 	    
@@ -135,8 +136,8 @@ function init(){
 	        table.appendChild(tr)
 
     }//*** END each row
-    div.appendChild(table);
-	document.getElementById("table_container").appendChild(div)
+    //div.appendChild(table);
+	document.getElementById("table_container").appendChild(table)
     //document.getElementById("table_container").appendChild(table);
 
 
@@ -147,7 +148,7 @@ function init(){
 function handleSlider() {
 
     var slider = document.getElementById("myRange");
-    var output = document.getElementById("demo");
+    var output = document.getElementById("header");
 
     if (slider.value < (Object.keys(infographic_left).length) ) {
 	    index = Object.keys(infographic_left)[slider.value];
