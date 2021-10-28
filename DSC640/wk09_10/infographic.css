@@ -39,8 +39,18 @@
   cursor: pointer; /* Cursor on hover */
 } 
 
+#table_container {
+  width : 100%;
+  display : flex;
+   
+}
+#table_container div {
+  padding-right:  100px;
+  padding-left:  100px;
 
-#table_container td 
+}
+
+#table_container td
 {
     text-align: center; 
     vertical-align: middle;
@@ -50,6 +60,12 @@
     padding-bottom:  1px;
 }
 
+.header {
+  text-align: left;
+  font-size : 1.25em;
+}
+
+
 .Date { display: none }
 .tier { display : inline }
 .Population { display : none }
@@ -58,4 +74,4 @@
 .New_Confirm { display : none }
 .New_Deaths { display : none }
 .case_100k_avg_daily { display : inline }
-.death_100k_avg_daily { display : none }
+.death_100k_avg_daily { display : inline }
