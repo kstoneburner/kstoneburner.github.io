@@ -41,9 +41,12 @@
 
 #table_container {
   width : 100%;
-  display : flex;
-   
+  display : inline-block;
+
+  vertical-align: baseline; /* 2 */
+
 }
+
 #table_container div {
   padding-right:  100px;
   padding-left:  100px;
@@ -65,6 +68,12 @@
   font-size : 1.25em;
 }
 
+#myChart{
+    display: inline-block; /* 1 */
+  vertical-align: baseline; /* 2 */
+
+}
+
 
 .Date { display: none }
 .tier { display : inline }
@@ -75,3 +84,5 @@
 .New_Deaths { display : none }
 .case_100k_avg_daily { display : none }
 .death_100k_avg_daily { display : none }
+.relative_death_100k { display : none }
+.relative_confirm_100k { display : none }

@@ -1,22 +1,15 @@
 //*** Barchart Using Canvas
 //*** https://code.tutsplus.com/tutorials/how-to-draw-bar-charts-using-javascript-and-html5-canvas--cms-28561
+//*** Chart.org
+//*** https://www.chartjs.org/docs/latest/
+
 const tier_colors = ['#b40426', '#d95847', '#f18d6f', '#f7b89c', '#ead4c8', '#cdd9ec', '#aac7fd', '#82a6fb', '#5d7ce6'];
-var myVinyls = {
-    "Classical music": 10,
-    "Alternative rock": 14,
-    "Pop": 2,
-    "Jazz": 12
-};
+
 
 var myData = {}
-
+var confirm_chart = null
 function init(){
-	//loadJSON)
-	//console.log(window.location)
-	//console.log(window.location.href.replace("infographic.html","infographic_left.json"));
-    //filename = window.location.href.replace("infographic.html","infographic_left.json");
-    //loadJSON(filename);
-    //console.log(infographic_left);
+
     
     var slider = document.getElementById("myRange");
     
@@ -52,29 +45,15 @@ function init(){
 	    //*** Build Table Container
 	    var table = document.createElement("table");
 	    var top_obj = info_OBJ[index];
-
-
-	    
-	    /*
-		var div = document.createElement("div");
-
-		if (info_gfk_types[infographic_type] == 'left'){
-			div.innerHTML = "Before Surge:</br>" + Object.keys(info_OBJ)[0] + " - " + Object.keys(info_OBJ)[Object.keys(info_OBJ).length-1];
-		}
-	    
-	    if (info_gfk_types[infographic_type] == 'right'){
-			div.innerHTML = "Post Surge:</br>" + Object.keys(info_OBJ)[0] + " - " + Object.keys(info_OBJ)[Object.keys(info_OBJ).length-1];
-		}
-	    div.className = 'header';
-	    */
-	    
-
-	    
 	    
 	    var tr = document.createElement("tr");
 	    
 	    for (label in top_obj[(Object.keys(top_obj))[0]]){
+	        
+			
 	        var th = document.createElement("th");    
+	        th.className = label;
+
 	        if (label ==  "tier"){
 	            label = "Tier";
 	        }
@@ -93,7 +72,7 @@ function init(){
 	            label = "Relative</br>Death %";
 	        }
 
-	        th.className = label;
+	        
 
 			th.innerHTML = label;
 
@@ -150,76 +129,9 @@ function init(){
 	document.getElementById("table_container").appendChild(table)
     //document.getElementById("table_container").appendChild(table);
 
-    testCode()
+    initChart();
     }//*** END Each Infographic type
-/*
-var bodySelection = d3.select("body");
-
-var svgSelection = bodySelection.append("svg")
-      .attr("width", 50)
-      .attr("height", 50);
-
-var circleSelection = svgSelection.append("circle")
-      .attr("cx", 25)
-      .attr("cy", 25)
-      .attr("r", 25)
-      .style("fill", "purple");
-
-var theData = [ 1, 2, 3 ];
-
-var p = d3.select("body").selectAll("p")
-  .data(theData)
-  .enter()
-  .append("p")
-  .text( function (d) { return d; } );
-*/
-
-/*
-circleRadii = [40, 20, 10];
-
-
-var svgContainer = d3.select("body").append("svg")
-                                    .attr("width", 200)
-                                    .attr("height", 200);
-
-var circles = svgContainer.selectAll("circle")
-                          .data(circleRadii)
-                          .enter()
-                          .append("circle");
-
-var circleAttributes = circles
-                       .attr("cx", 50)
-                       .attr("cy", 50)
-                       .attr("r", function (d) { return d; })
-                       .style("fill", function(d) {
-
-                           var returnColor;
-
-                           if (d === 40) { returnColor = "green";
-                           } else if (d === 20) { returnColor = "purple";
-                           } else if (d === 10) { returnColor = "red"; }
-
-                           return returnColor;
-                       });
-*/
-
-// set the dimensions and margins of the graph
-/*
-var margin = {top: 20, right: 30, bottom: 40, left: 90},
-    width = 460 - margin.left - margin.right,
-    height = 400 - margin.top - margin.bottom;
-*/
-/*
-// append the svg object to the body of the page
-var svg = d3.select("#my_dataviz")
-  .append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
-  .append("g")
-    .attr("transform",
-          "translate(" + margin.left + "," + margin.top + ")");
-    
-*/
+    moreTest();
 
 
 }//*** END Init
@@ -228,7 +140,9 @@ function handleSlider() {
 
     var slider = document.getElementById("myRange");
     var output = document.getElementById("header");
+    
     testCode();
+    
     if (slider.value <= (Object.keys(infographic_left).length) ) {
 	    index = Object.keys(infographic_left)[slider.value];
 
@@ -356,139 +270,227 @@ function handleSlider() {
 
 }//*** END handleSlider
 
+function initChart(){
+	
+	var table = document.getElementById("table_container");
+	
+
+	
 
 
-
-//*** Helper Function
-/*
-The drawLine function takes six parameters:
-
-    ctx: reference to the drawing context
-    startX: the X coordinate of the line starting point
-    startY: the Y coordinate of the line starting point
-    endX: the X coordinate of the line end point
-    endY: the Y coordinate of the line end point
-    color: the color of the line
-*/
-function drawLine(ctx, startX, startY, endX, endY,color){
-    ctx.save();
-    ctx.strokeStyle = color;
-    ctx.beginPath();
-    ctx.moveTo(startX,startY);
-    ctx.lineTo(endX,endY);
-    ctx.stroke();
-    ctx.restore();
-}
-//*** Helper Function
-/*
-The drawBar function takes six parameters:
-
-    ctx: reference to the drawing context
-    upperLeftCornerX: the X coordinate of the bar's upper left corner
-    upperLeftCornerY: the X coordinate of the bar's upper left corner
-    width: the width of the bar
-    height: the height of the bar
-    color: the color of the bar
-
-*/
-function drawBar(ctx, upperLeftCornerX, upperLeftCornerY, width, height,color){
-    ctx.save();
-    ctx.fillStyle=color;
-    ctx.fillRect(upperLeftCornerX,upperLeftCornerY,width,height);
-    ctx.restore();
-}
+    console.log();
 
 
-var Barchart = function(options){
-    this.options = options;
-    this.canvas = options.canvas;
-    this.ctx = this.canvas.getContext("2d");
-    this.colors = options.colors;
- 
-    this.draw = function(){
-        var maxValue = 0;
-        for (var categ in this.options.data){
-            maxValue = Math.max(maxValue,this.options.data[categ]);
-        }
-        var canvasActualHeight = this.canvas.height - this.options.padding * 2;
-        var canvasActualWidth = this.canvas.width - this.options.padding * 2;
+	data_list = [];
+	data_labels = [];
+	var slider = document.getElementById("myRange");
+	index = Object.keys(infographic_left)[slider.value];
+	for (tier in infographic_left[index]){
+		
+		data_list.push(parseInt(infographic_left[index][tier]['case_100k_avg']));
+		label=tier.toString().replace("total_","")+"%";		
+		data_labels.push(label)
+		
+	}
+	console.log(infographic_left[index][tier]);
+	console.log(myData);
+console.log(data_labels);
 
-        //drawing the grid lines
-        var gridValue = 0;
-        while (gridValue <= maxValue){
-            var gridY = canvasActualHeight * (1 - gridValue/maxValue) + this.options.padding;
-            drawLine(
-                this.ctx,
-                0,
-                gridY,
-                this.canvas.width,
-                gridY,
-                this.options.gridColor
-            );
-            
-            //writing grid markers
-            this.ctx.save();
-            this.ctx.fillStyle = this.options.gridColor;
-            this.ctx.font = "bold 10px Arial";
-            this.ctx.fillText(gridValue, 10,gridY - 2);
-            this.ctx.restore();
 
-            gridValue+=this.options.gridScale;
-        }
- 
-        //drawing the bars
-        var barIndex = 0;
-        var numberOfBars = Object.keys(this.options.data).length;
-        var barSize = (canvasActualWidth)/numberOfBars;
+var ctx = document.getElementById('myChart').getContext('2d');
 
-        for (categ in this.options.data){
-            var val = this.options.data[categ];
-            var barHeight = Math.round( canvasActualHeight * val/maxValue) ;
-            drawBar(
-                this.ctx,
-                this.options.padding + barIndex * barSize,
-                this.canvas.height - barHeight - this.options.padding,
-                barSize,
-                barHeight,
-                this.colors[barIndex%this.colors.length]
-            );
+var canvas = document.getElementById('myChart');
+canvas.style.width = '300px'
+canvas.style.height = table.getBoundingClientRect().height + 'px'
+confirm_chart = new Chart(ctx, {
+    type: 'bar',
 
-            barIndex++;
-        }
- 
+    data: {
+
+        labels : data_labels,
+        datasets: [{
+            label: 'Confirmed Cases per 100k by Tier',
+            //data: [12, 19, 3, 5, 2, 3],
+            data: data_list,
+            backgroundColor: tier_colors,
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1,
+        }]
+    },
+    options: {
+
+        scales: {
+            x: {
+                beginAtZero: true,
+				min: 0,
+            	max: 100,
+            	stepSize: 20
+            }
+        },
+        indexAxis : 'y',
+        responsive: false,
+        
+		maintainAspectRatio: false,
+		showScale: false,
+  		//aspectRatio: 1,
+
     }
-}
+});
 
+}
+function updateData(chart, label, data) {
+    chart.data.labels = label;
+    chart.data = data;
+    chart.update();
+}
 
 function testCode(){
 	myData = {};
+	data_list = [];
+	data_labels = [];
+	var slider = document.getElementById("myRange");
+	index = Object.keys(infographic_left)[slider.value];
 	for (tier in infographic_left[index]){
 		
-		//myData[tier.toString()] = parseInt(infographic_left[index][tier]['relative_confirm_100k']);
 		myData[tier.toString()] = parseInt(infographic_left[index][tier]['case_100k_avg']);
-
-		
+		//myData[tier.toString()] = parseInt(infographic_left[index][tier]['New_Confirm']);
+		//data_list.push(parseInt(infographic_left[index][tier]['relative_confirm_100k']));
+		data_list.push(parseInt(infographic_left[index][tier]['case_100k_avg']));
+		label=tier.toString().replace("total_","")+"%";		
+		data_labels.push(label)
 		
 	}
 	//console.log(infographic_left[index][tier]);
-	console.log(myData);
-	var myCanvas = document.getElementById("myCanvas");
-	myCanvas.width = 300;
-	myCanvas.height = 300;
-	 
-	var ctx = myCanvas.getContext("2d");
+	//console.log(myData);
+	//console.log(data_labels);
 
-	var myBarchart = new Barchart(
-	    {
-	        canvas:myCanvas,
-	        padding:10,
-	        gridScale:5,
-	        gridColor:"#eeeeee",
-	        data:myData,
-	        //data:myVinyls,
-	        //colors:["#a55ca5","#67b6c7", "#bccd7a","#eb9743", "#a55ca5","#a55ca5","#a55ca5","#a55ca5","#a55ca5"]
-	        colors : tier_colors,
-	    }
-	);
-	myBarchart.draw();
+	var chart = document.getElementById('myChart');
+
+
+	confirm_chart.data.datasets[0].data = data_list;
+	confirm_chart.update();
+}//*** 
+// Copyright 2021 Observable, Inc.
+// Released under the ISC license.
+// https://observablehq.com/@d3/choropleth
+function Choropleth(data, {
+  id = d => d.id, // given d in data, returns the feature id
+  value = () => undefined, // given d in data, returns the quantitative value
+  title, // given a feature f and possibly a datum d, returns the hover text
+  format, // optional format specifier for the title
+  scale = d3.scaleSequential, // type of color scale
+  domain, // [min, max] values; input of color scale
+  range = d3.interpolateBlues, // output of color scale
+  width = 640, // outer width, in pixels
+  height, // outer height, in pixels
+  projection, // a D3 projection; null for pre-projected geometry
+  features, // a GeoJSON feature collection
+  featureId = d => d.id, // given a feature, returns its id
+  borders, // a GeoJSON object for stroking borders
+  outline = projection && projection.rotate ? {type: "Sphere"} : null, // a GeoJSON object for the background
+  unknown = "#ccc", // fill color for missing data
+  fill = "white", // fill color for outline
+  stroke = "white", // stroke color for borders
+  strokeLinecap = "round", // stroke line cap for borders
+  strokeLinejoin = "round", // stroke line join for borders
+  strokeWidth, // stroke width for borders
+  strokeOpacity, // stroke opacity for borders
+} = {}) {
+  // Compute values.
+  const N = d3.map(data, id);
+  const V = d3.map(data, value).map(d => d == null ? NaN : +d);
+  const Im = new d3.InternMap(N.map((id, i) => [id, i]));
+  const If = d3.map(features.features, featureId);
+
+  // Compute default domains.
+  if (domain === undefined) domain = d3.extent(V);
+
+  // Construct scales.
+  const color = scale(domain, range);
+  if (unknown !== undefined) color.unknown(unknown);
+
+  // Compute titles.
+  if (title === undefined) {
+    format = color.tickFormat(100, format);
+    title = (f, i) => `${f.properties.name}\n${format(V[i])}`;
+  } else if (title !== null) {
+    const T = title;
+    const O = d3.map(data, d => d);
+    title = (f, i) => T(f, O[i]);
+  }
+
+  // Compute the default height. If an outline object is specified, scale the projection to fit
+  // the width, and then compute the corresponding height.
+  if (height === undefined) {
+    if (outline === undefined) {
+      height = 400;
+    } else {
+      const [[x0, y0], [x1, y1]] = d3.geoPath(projection.fitWidth(width, outline)).bounds(outline);
+      const dy = Math.ceil(y1 - y0), l = Math.min(Math.ceil(x1 - x0), dy);
+      projection.scale(projection.scale() * (l - 1) / l).precision(0.2);
+      height = dy;
+    }
+  }
+
+  // Construct a path generator.
+  const path = d3.geoPath(projection);
+
+  const svg = d3.create("svg")
+      .attr("width", width)
+      .attr("height", height)
+      .attr("viewBox", [0, 0, width, height])
+      .attr("style", "max-width: 100%; height: auto; height: intrinsic;");
+
+  if (outline != null) svg.append("path")
+      .attr("fill", fill)
+      .attr("stroke", "currentColor")
+      .attr("d", path(outline));
+
+  svg.append("g")
+    .selectAll("path")
+    .data(features.features)
+    .join("path")
+      .attr("fill", (d, i) => color(V[Im.get(If[i])]))
+      .attr("d", path)
+    .append("title")
+      .text((d, i) => title(d, Im.get(If[i])));
+
+  if (borders != null) svg.append("path")
+      .attr("pointer-events", "none")
+      .attr("fill", "none")
+      .attr("stroke", stroke)
+      .attr("stroke-linecap", strokeLinecap)
+      .attr("stroke-linejoin", strokeLinejoin)
+      .attr("stroke-width", strokeWidth)
+      .attr("stroke-opacity", strokeOpacity)
+      .attr("d", path(borders));
+
+  return Object.assign(svg.node(), {scales: {color}});
+  
+function moreTest(){
+	//*** https://synthesis.sbecker.net/articles/2012/07/18/learning-d3-part-7-choropleth-maps
+	//*** https://observablehq.com/@d3/choropleth
+	console.log("more Testing");
+
+chart = Choropleth(unemployment, {
+  id: d => d.id,
+  value: d => d.rate,
+  scale: d3.scaleQuantize,
+  domain: [1, 10],
+  range: d3.schemeBlues[9],
+  title: (f, d) => `${f.properties.name}, ${statemap.get(f.id.slice(0, 2)).properties.name}\n${d?.rate}%`,
+  features: counties,
+  borders: statemesh,
+  width: 975,
+  height: 610
+})
+
+
 }

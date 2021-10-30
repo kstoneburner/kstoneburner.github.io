@@ -2,10 +2,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <link rel="stylesheet" href="infographic.css">
-<script src="d3.v6.min.js" ></script>
+<script src="chart.min.js" ></script>
 <script src="infographic.js" ></script>
 <script src='infographic_left.js'></script>
 <script src='infographic_right.js'></script>
+<script src='d3.v6.min.js'></script>
 <meta charset="utf-8">
 <body>
 
@@ -43,14 +44,19 @@
 		Author: Kurt Stoneburner
 	</h2>
 	</div>
+	<img src="z_blog_natl_county_vax.jpg" width="100%"class='image' >
+	
 	<div id='main_container'>
 		<div class="slidecontainer">
 			<input type="range" min="0" max="100" value="0" class="slider" id="myRange" onload="buildSlider()" oninput="handleSlider()" >
 		</div>
 		<div id="header">X</div>
-		<div id="table_container"></div>
+		<div style="display:inline-flex;">
+			<div id="table_container"></div>
+			<div ><canvas id="myChart" ></canvas></div>
+		</div>
 	</div>
-	<canvas id="myCanvas"></canvas>
+	<div id="chart"> 
 <div>
 	<p>Sources:</p>
  <li>
