@@ -31,14 +31,16 @@ const colorScale = d3.scaleThreshold()
 
 // Load external data and boot
 Promise.all([
-//d3.json("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson"),
-d3.json("counties-albers-10m.json"),
+d3.json("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson"),
+//d3.json("https://kstoneburner.github.io/DSC640/wk09_10/counties-albers-10m.json"),
 d3.csv("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world_population.csv", function(d) {
+    console.log(d);
+    console.log(data);
     data.set(d.code, +d.pop)
 })
 ]).then(function(loadData){
     let topo = loadData[0]
-
+    console.log(topo)
     // Draw the map
   svg.append("g")
     .selectAll("path")
