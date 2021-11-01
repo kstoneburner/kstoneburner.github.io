@@ -27,7 +27,6 @@ function init(){
     output.innerHTML = index;
     output.innerHTML = "Date: " + index + "</br>Day: " +( parseInt(slider.value+1)) ; 
     
-
     const info_gfk_types = ['left'];
 
     for (var infographic_type in info_gfk_types) {
@@ -39,11 +38,12 @@ function init(){
 		if (info_gfk_types[infographic_type] == 'right'){
     		var info_OBJ = infographic_right;
     	}
-    		
+    	
     	index = Object.keys(info_OBJ)[slider.value];	
     	
 	    //*** Build Table Container
 	    var table = document.createElement("table");
+	    table.id = "table_inner";
 	    var top_obj = info_OBJ[index];
 	    
 	    var tr = document.createElement("tr");
@@ -70,6 +70,9 @@ function init(){
 
 	        if (label ==  "relative_death_100k"){
 	            label = "Relative</br>Death %";
+	        }
+	        if (label ==  "total_vaccinated_percent"){
+	            label = "Vaccinated";
 	        }
 
 	        
@@ -127,11 +130,10 @@ function init(){
     }//*** END each row
     //div.appendChild(table);
 	document.getElementById("table_container").appendChild(table)
-    //document.getElementById("table_container").appendChild(table);
 
     initChart();
+
     }//*** END Each Infographic type
-    moreTest();
 
 
 }//*** END Init
@@ -142,7 +144,8 @@ function handleSlider() {
     var output = document.getElementById("header");
     
     testCode();
-    
+    updateImages();
+
     if (slider.value <= (Object.keys(infographic_left).length) ) {
 	    index = Object.keys(infographic_left)[slider.value];
 
@@ -205,146 +208,168 @@ function handleSlider() {
 
 
 	}//*** END is infographic_LEFT
-	
-	else {
 
-		//*****************************
-		//*** Draw Right Table
-		//*****************************
-		index = Object.keys(infographic_right)[slider.value - ((Object.keys(infographic_left).length)-2)];
-
-	    output.innerHTML = "Date: " + index + "</br>Days: " + slider.value ; 
-	  
-	    var top_obj = infographic_right[index];
-	    
-	    var table = document.getElementById("table_container_right");
-
-	    for (row in top_obj){
-	        
-	        for (elem in top_obj[row]){
-
-	            value = top_obj[row][elem]
-	            if (elem == 'tier'){
-	                value = value.replace("total_","")
-	                value += "%"                
-	            }
-
-	            this_DOM = document.getElementById("right_" + row + "_" + elem);
-
-	            this_DOM.innerHTML = value;
-
-	        }//*** END each Elem in row
-
-	    }//*** End Each row in top OBJ	    
-
-
-		//*****************************
-		//*** Draw Left Table
-		//*****************************
-		index = Object.keys(infographic_left)[(Object.keys(infographic_left).length)-1];
-
-		var top_obj = infographic_left[index];
-
-			    var table = document.getElementById("table_container_let");
-
-	    for (row in top_obj){
-	        
-	        for (elem in top_obj[row]){
-
-	            value = top_obj[row][elem]
-	            if (elem == 'tier'){
-	                value = value.replace("total_","")
-	                value += "%"                
-	            }
-
-	            this_DOM = document.getElementById("left_" + row + "_" + elem);
-
-	            this_DOM.innerHTML = value;
-
-	        }//*** END each Elem in row
-
-	    }//*** End Each row in top OBJ	    
-
-
-	   }//*** END update right Container
 
 }//*** END handleSlider
 
 function initChart(){
 	
 	var table = document.getElementById("table_container");
+	var table = document.getElementById("table_inner");
 	
 
-	
-
-
-    console.log();
-
-
-	data_list = [];
+	confirm_list = [];
+	death_list = [];
 	data_labels = [];
 	var slider = document.getElementById("myRange");
 	index = Object.keys(infographic_left)[slider.value];
 	for (tier in infographic_left[index]){
 		
-		data_list.push(parseInt(infographic_left[index][tier]['case_100k_avg']));
+		confirm_list.push(parseInt(infographic_left[index][tier]['case_100k_avg']));
+		death_list.push(parseInt(infographic_left[index][tier]['death_100k_avg']));
 		label=tier.toString().replace("total_","")+"%";		
 		data_labels.push(label)
 		
 	}
-	console.log(infographic_left[index][tier]);
-	console.log(myData);
-console.log(data_labels);
 
 
-var ctx = document.getElementById('myChart').getContext('2d');
+	var vax_jpg = document.getElementById('vax_jpg');
+	//vax_jpg.height = parseInt(table.getBoundingClientRect().height * 1.15) + 'px';
 
-var canvas = document.getElementById('myChart');
-canvas.style.width = '300px'
-canvas.style.height = table.getBoundingClientRect().height + 'px'
-confirm_chart = new Chart(ctx, {
-    type: 'bar',
 
-    data: {
+	var confirm_ctx = document.getElementById('confirm_chart').getContext('2d');
 
-        labels : data_labels,
-        datasets: [{
-            label: 'Confirmed Cases per 100k by Tier',
-            //data: [12, 19, 3, 5, 2, 3],
-            data: data_list,
-            backgroundColor: tier_colors,
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1,
-        }]
-    },
-    options: {
+	var confirm_canvas = document.getElementById('confirm_chart');
+	var death_canvas = document.getElementById('death_chart');
+	confirm_canvas.style.width = '100px';
+	confirm_canvas.style.height = parseInt(table.getBoundingClientRect().height * 1.15) + 'px';
 
-        scales: {
-            x: {
-                beginAtZero: true,
-				min: 0,
-            	max: 100,
-            	stepSize: 20
-            }
-        },
-        indexAxis : 'y',
-        responsive: false,
-        
-		maintainAspectRatio: false,
-		showScale: false,
-  		//aspectRatio: 1,
+	death_canvas.style.width = '100px';
+	death_canvas.style.height = parseInt(table.getBoundingClientRect().height * 1.15) + 'px';
 
-    }
-});
+	vax_jpg.height = parseInt(confirm_canvas.getBoundingClientRect().height);
 
-}
+	//*** Resize Canvas if there is leftover room
+	if (window.innerWidth > parseInt(vax_jpg.getBoundingClientRect().right)){
+		remainder = window.innerWidth - parseInt(vax_jpg.getBoundingClientRect().right)
+		remainder = parseInt(remainder/2)
+		confirm_canvas.style.width = (confirm_canvas.getBoundingClientRect().width + remainder) + 'px';
+		death_canvas.style.width = confirm_canvas.style.width;
+	}
+
+
+
+
+	confirm_chart = new Chart(confirm_ctx, {
+	    type: 'bar',
+
+	    data: {
+
+	        labels : data_labels,
+	        datasets: [{
+	            label: 'Confirmed Cases per 100k by Tier',
+	            //data: [12, 19, 3, 5, 2, 3],
+	            data: confirm_list,
+	            backgroundColor: tier_colors,
+	            borderColor: [
+	                'rgba(255, 99, 132, 1)',
+	                'rgba(54, 162, 235, 1)',
+	                'rgba(255, 206, 86, 1)',
+	                'rgba(75, 192, 192, 1)',
+	                'rgba(153, 102, 255, 1)',
+	                'rgba(255, 159, 64, 1)'
+	            ],
+	            borderWidth: 1,
+	        }]
+	    },
+	    options: {
+
+	        scales: {
+	            x: {
+	                beginAtZero: true,
+					min: 0,
+	            	max: 100,
+	            	stepSize: 20
+	            }
+	        },
+	        indexAxis : 'y',
+	        responsive: false,
+	        plugins:  {
+	        	title : {
+	        		display : true,
+	        		text: 'Confirmed Cases per 100k by Tier',
+	        	},
+	        	legend : {
+	        		display : false,
+
+	        	}
+	        },
+			maintainAspectRatio: false,
+			showScale: false,
+	  		//aspectRatio: 1,
+
+	    }
+	});
+
+
+	var death_ctx = document.getElementById('death_chart').getContext('2d');
+
+	var death_canvas = document.getElementById('death_chart');
+	death_canvas.style.width = '300px'
+	death_canvas.style.height =confirm_canvas.style.height;
+	death_chart = new Chart(death_ctx, {
+	    type: 'bar',
+
+	    data: {
+
+	        labels : data_labels,
+	        datasets: [{
+	            label: 'Confirmed Cases per 100k by Tier',
+	            //data: [12, 19, 3, 5, 2, 3],
+	            data: death_list,
+	            backgroundColor: tier_colors,
+	            borderColor: [
+	                'rgba(255, 99, 132, 1)',
+	                'rgba(54, 162, 235, 1)',
+	                'rgba(255, 206, 86, 1)',
+	                'rgba(75, 192, 192, 1)',
+	                'rgba(153, 102, 255, 1)',
+	                'rgba(255, 159, 64, 1)'
+	            ],
+	            borderWidth: 1,
+	        }]
+	    },
+	    options: {
+
+	        scales: {
+	            x: {
+	                beginAtZero: true,
+					min: 0,
+	            	max: 2,
+	            	stepSize: .5
+	            }
+	        },
+	        indexAxis : 'y',
+	        responsive: false,
+	        plugins:  {
+	        	title : {
+	        		display : true,
+	        		text: 'Deaths per 100k by Tier',
+	        	},
+	        	legend : {
+	        		display : false,
+
+	        	}
+	        },
+			maintainAspectRatio: false,
+			showScale: false,
+	  		//aspectRatio: 1,
+
+	    }
+	});
+
+
+}//*** END init Chart
 function updateData(chart, label, data) {
     chart.data.labels = label;
     chart.data = data;
@@ -353,7 +378,8 @@ function updateData(chart, label, data) {
 
 function testCode(){
 	myData = {};
-	data_list = [];
+	confirm_list = [];
+	death_list = [];
 	data_labels = [];
 	var slider = document.getElementById("myRange");
 	index = Object.keys(infographic_left)[slider.value];
@@ -362,7 +388,8 @@ function testCode(){
 		myData[tier.toString()] = parseInt(infographic_left[index][tier]['case_100k_avg']);
 		//myData[tier.toString()] = parseInt(infographic_left[index][tier]['New_Confirm']);
 		//data_list.push(parseInt(infographic_left[index][tier]['relative_confirm_100k']));
-		data_list.push(parseInt(infographic_left[index][tier]['case_100k_avg']));
+		confirm_list.push(parseInt(infographic_left[index][tier]['case_100k_avg']));
+		death_list.push(parseInt(infographic_left[index][tier]['death_100k_avg']));
 		label=tier.toString().replace("total_","")+"%";		
 		data_labels.push(label)
 		
@@ -371,126 +398,55 @@ function testCode(){
 	//console.log(myData);
 	//console.log(data_labels);
 
-	var chart = document.getElementById('myChart');
+	//var chart = document.getElementById('confirm_chart');
 
 
-	confirm_chart.data.datasets[0].data = data_list;
+	confirm_chart.data.datasets[0].data = confirm_list;
 	confirm_chart.update();
+
+	death_chart.data.datasets[0].data = death_list;
+	death_chart.update();
+	
 }//*** 
-// Copyright 2021 Observable, Inc.
-// Released under the ISC license.
-// https://observablehq.com/@d3/choropleth
-function Choropleth(data, {
-  id = d => d.id, // given d in data, returns the feature id
-  value = () => undefined, // given d in data, returns the quantitative value
-  title, // given a feature f and possibly a datum d, returns the hover text
-  format, // optional format specifier for the title
-  scale = d3.scaleSequential, // type of color scale
-  domain, // [min, max] values; input of color scale
-  range = d3.interpolateBlues, // output of color scale
-  width = 640, // outer width, in pixels
-  height, // outer height, in pixels
-  projection, // a D3 projection; null for pre-projected geometry
-  features, // a GeoJSON feature collection
-  featureId = d => d.id, // given a feature, returns its id
-  borders, // a GeoJSON object for stroking borders
-  outline = projection && projection.rotate ? {type: "Sphere"} : null, // a GeoJSON object for the background
-  unknown = "#ccc", // fill color for missing data
-  fill = "white", // fill color for outline
-  stroke = "white", // stroke color for borders
-  strokeLinecap = "round", // stroke line cap for borders
-  strokeLinejoin = "round", // stroke line join for borders
-  strokeWidth, // stroke width for borders
-  strokeOpacity, // stroke opacity for borders
-} = {}) {
-  // Compute values.
-  const N = d3.map(data, id);
-  const V = d3.map(data, value).map(d => d == null ? NaN : +d);
-  const Im = new d3.InternMap(N.map((id, i) => [id, i]));
-  const If = d3.map(features.features, featureId);
 
-  // Compute default domains.
-  if (domain === undefined) domain = d3.extent(V);
-
-  // Construct scales.
-  const color = scale(domain, range);
-  if (unknown !== undefined) color.unknown(unknown);
-
-  // Compute titles.
-  if (title === undefined) {
-    format = color.tickFormat(100, format);
-    title = (f, i) => `${f.properties.name}\n${format(V[i])}`;
-  } else if (title !== null) {
-    const T = title;
-    const O = d3.map(data, d => d);
-    title = (f, i) => T(f, O[i]);
-  }
-
-  // Compute the default height. If an outline object is specified, scale the projection to fit
-  // the width, and then compute the corresponding height.
-  if (height === undefined) {
-    if (outline === undefined) {
-      height = 400;
-    } else {
-      const [[x0, y0], [x1, y1]] = d3.geoPath(projection.fitWidth(width, outline)).bounds(outline);
-      const dy = Math.ceil(y1 - y0), l = Math.min(Math.ceil(x1 - x0), dy);
-      projection.scale(projection.scale() * (l - 1) / l).precision(0.2);
-      height = dy;
-    }
-  }
-
-  // Construct a path generator.
-  const path = d3.geoPath(projection);
-
-  const svg = d3.create("svg")
-      .attr("width", width)
-      .attr("height", height)
-      .attr("viewBox", [0, 0, width, height])
-      .attr("style", "max-width: 100%; height: auto; height: intrinsic;");
-
-  if (outline != null) svg.append("path")
-      .attr("fill", fill)
-      .attr("stroke", "currentColor")
-      .attr("d", path(outline));
-
-  svg.append("g")
-    .selectAll("path")
-    .data(features.features)
-    .join("path")
-      .attr("fill", (d, i) => color(V[Im.get(If[i])]))
-      .attr("d", path)
-    .append("title")
-      .text((d, i) => title(d, Im.get(If[i])));
-
-  if (borders != null) svg.append("path")
-      .attr("pointer-events", "none")
-      .attr("fill", "none")
-      .attr("stroke", stroke)
-      .attr("stroke-linecap", strokeLinecap)
-      .attr("stroke-linejoin", strokeLinejoin)
-      .attr("stroke-width", strokeWidth)
-      .attr("stroke-opacity", strokeOpacity)
-      .attr("d", path(borders));
-
-  return Object.assign(svg.node(), {scales: {color}});
-  
-function moreTest(){
-	//*** https://synthesis.sbecker.net/articles/2012/07/18/learning-d3-part-7-choropleth-maps
-	//*** https://observablehq.com/@d3/choropleth
-	console.log("more Testing");
-
-chart = Choropleth(unemployment, {
-  id: d => d.id,
-  value: d => d.rate,
-  scale: d3.scaleQuantize,
-  domain: [1, 10],
-  range: d3.schemeBlues[9],
-  title: (f, d) => `${f.properties.name}, ${statemap.get(f.id.slice(0, 2)).properties.name}\n${d?.rate}%`,
-  features: counties,
-  borders: statemesh,
-  width: 975,
-  height: 610
-})
+function updateImages(){
+	var confirm_jpg = document.getElementById('confirm_jpg');
+	var death_jpg = document.getElementById('death_jpg');
+	var vax_jpg = document.getElementById('vax_jpg');
 
 
-}
+	
+
+	var slider = document.getElementById("myRange");
+	const confirm_template = 'confirm_hist_'
+	const death_template = 'death_hist_'
+	const vax_template = 'vax_hist_'
+	
+	//*** Change the image of the Fakegif based on the Slider Index
+	
+
+//vax_hist_312
+	//*** Get the current filename from the img 
+	var find_confirm = confirm_jpg.src.split("/")
+	find_confirm = find_confirm[find_confirm.length - 1]
+
+	//*** Get the current filename from the img 
+	var find_death = death_jpg.src.split("/")
+	find_death = find_death[find_death.length - 1]
+
+	//*** Get the current filename from the img 
+	var find_vax = vax_jpg.src.split("/")
+	find_vax = find_vax[find_vax.length - 1]	
+  		
+	  	//*** Replace the current filename with one based on the slider
+	  	confirm_jpg.src = confirm_jpg.src.replace(find_confirm,confirm_template + (parseInt(slider.value) + 1)  + ".jpg")
+	  	death_jpg.src = death_jpg.src.replace(find_death,death_template + (parseInt(slider.value) + 1)  + ".jpg")
+	  
+	  	if (parseInt(slider.value) <= 312) {
+	  		//*** Set to First Vax Value if slider is before vax data
+	  		vax_jpg.src.replace(find_vax,"vax_hist_312.jpg");
+	  	}
+	  	else {
+	  		vax_jpg.src = vax_jpg.src.replace(find_vax,vax_template + (parseInt(slider.value) + 1)  + ".jpg")		
+	  	}
+}//*** END updateImages
