@@ -131,7 +131,16 @@ function init(){
     //div.appendChild(table);
 	document.getElementById("table_container").appendChild(table)
 
-    initChart();
+    
+
+	var current_vax_img = document.getElementById("current_vax_img")
+	var death_jpg = document.getElementById("death_jpg")
+	
+	const pageMaxWidth = death_jpg.getBoundingClientRect().right
+
+	current_vax_img.style.maxWidth = pageMaxWidth + "px"; 
+
+	initChart();
 
     }//*** END Each Infographic type
 
@@ -175,38 +184,6 @@ function handleSlider() {
 
 	    }//*** End Each row in top OBJ
 		
-		/*
-		//*** Draw Right Table
-	    var top_obj = infographic_right[Object.keys(infographic_right)[0]];
-	    
-	    var table = document.getElementById("table_container_right");
-
-	    for (row in top_obj){
-	        
-	        for (elem in top_obj[row]){
-
-	            value = top_obj[row][elem]
-
-	            this_DOM = document.getElementById("right_" + row + "_" + elem);
-
-	            this_DOM.innerHTML = "_";
-
-	            if (elem == 'tier'){
-	                value = value.replace("total_","")
-	                value += "%"                
-		            this_DOM.innerHTML = value;
-	            }
-
-
-
-	        }//*** END each Elem in row
-
-
-	    }//*** End Each row in top OBJ	    
-
-		*/
-
-
 	}//*** END is infographic_LEFT
 
 
@@ -214,7 +191,7 @@ function handleSlider() {
 
 function initChart(){
 	
-	var table = document.getElementById("table_container");
+	//var table = document.getElementById("table_container");
 	var table = document.getElementById("table_inner");
 	
 
@@ -232,23 +209,46 @@ function initChart(){
 		
 	}
 
+	var death_jpg = document.getElementById("death_jpg")
+	const pageMaxWidth = death_jpg.getBoundingClientRect().right
+	document.getElementById("intro_text").style.width=pageMaxWidth+'px';
 
 	var vax_jpg = document.getElementById('vax_jpg');
+	console.log(pageMaxWidth,parseInt(table.getBoundingClientRect().width),vax_jpg.getBoundingClientRect().width);
 	//vax_jpg.height = parseInt(table.getBoundingClientRect().height * 1.15) + 'px';
+	
 
+	var remainder = vax_jpg.getBoundingClientRect().width +  table.getBoundingClientRect().width;
+	console.log(remainder);
+	remainder = pageMaxWidth - remainder 
+	console.log(remainder);
+
+	remainder = parseInt(remainder /2);
+	
+	console.log("Remainder: " + remainder);
 
 	var confirm_ctx = document.getElementById('confirm_chart').getContext('2d');
+	var death_ctx = document.getElementById('death_chart').getContext('2d');
 
 	var confirm_canvas = document.getElementById('confirm_chart');
 	var death_canvas = document.getElementById('death_chart');
-	confirm_canvas.style.width = '100px';
-	confirm_canvas.style.height = parseInt(table.getBoundingClientRect().height * 1.15) + 'px';
 
-	death_canvas.style.width = '100px';
+	
+	//confirm_canvas.style.width = '100px';
+	
+
+
+	confirm_canvas.style.width = remainder+'px';
+	confirm_canvas.style.height = parseInt(table.getBoundingClientRect().height * 1.15) + 'px';
+	confirm_canvas.style.width = '300px';
+
+	death_canvas.style.width = remainder+'px';
+	death_canvas.style.width = '300px';
+
 	death_canvas.style.height = parseInt(table.getBoundingClientRect().height * 1.15) + 'px';
 
 	vax_jpg.height = parseInt(confirm_canvas.getBoundingClientRect().height);
-
+/*
 	//*** Resize Canvas if there is leftover room
 	if (window.innerWidth > parseInt(vax_jpg.getBoundingClientRect().right)){
 		remainder = window.innerWidth - parseInt(vax_jpg.getBoundingClientRect().right)
@@ -256,6 +256,8 @@ function initChart(){
 		confirm_canvas.style.width = (confirm_canvas.getBoundingClientRect().width + remainder) + 'px';
 		death_canvas.style.width = confirm_canvas.style.width;
 	}
+*/
+
 
 
 
@@ -312,11 +314,11 @@ function initChart(){
 	});
 
 
-	var death_ctx = document.getElementById('death_chart').getContext('2d');
 
-	var death_canvas = document.getElementById('death_chart');
-	death_canvas.style.width = '300px'
-	death_canvas.style.height =confirm_canvas.style.height;
+
+
+	//death_canvas.style.width = '300px'
+	//death_canvas.style.height =confirm_canvas.style.height;
 	death_chart = new Chart(death_ctx, {
 	    type: 'bar',
 

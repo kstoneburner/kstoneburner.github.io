@@ -5,8 +5,8 @@
 <script src="chart.min.js" ></script>
 <script src="infographic.js" ></script>
 <script src='infographic_left.js'></script>
-<script src='infographic_right.js'></script>
-<script src='d3.v6.min.js'></script>
+<!-- <script src='infographic_right.js'></script> -->
+<!-- <script src='d3.v6.min.js'></script> -->
 <meta charset="utf-8">
 <body>
 
@@ -40,12 +40,15 @@
 		Week 09/10<br/>
 	</h1>
 	<h2>
-		Exercise XXX<br/>
+		Exercise Project Task 4 - Infographic<br/>
 		Author: Kurt Stoneburner
 	</h2>
 	</div>
-	<img src="z_blog_natl_county_vax.jpg" width="100%"class='image' >
-	
+	<img id="current_vax_img" src="z_blog_natl_county_vax.jpg" width="100%"class='image' >
+	<div id="intro_text">
+		<p>This is the current state of vaccination in the United States. If each county was grouped together by vaccination rates. How would these counties fare throughout the pandemic?</p>
+		<p>Move the slider to see how COVID affected these counties throughout the pandemic. Vaccines weren't deployed till the start of 2021 and didn't see significant vaccination levels till March 2021. Until then, COVID affected all counties similarly. After the COVID surge of July 2021, the affects of vaccines can be seen especially in death rates.</p>
+	</div>
 	<div id='main_container'>
 		<div class="slidecontainer">
 			<input type="range" min="0" max="100" value="0" class="slider" id="myRange" onload="buildSlider()" oninput="handleSlider()" >
