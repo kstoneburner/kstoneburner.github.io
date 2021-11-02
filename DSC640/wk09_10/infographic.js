@@ -240,10 +240,10 @@ function initChart(){
 
 	confirm_canvas.style.width = remainder+'px';
 	confirm_canvas.style.height = parseInt(table.getBoundingClientRect().height * 1.15) + 'px';
-	confirm_canvas.style.width = '300px';
+	confirm_canvas.style.width = '400px';
 
 	death_canvas.style.width = remainder+'px';
-	death_canvas.style.width = '300px';
+	death_canvas.style.width = '400px';
 
 	death_canvas.style.height = parseInt(table.getBoundingClientRect().height * 1.15) + 'px';
 
