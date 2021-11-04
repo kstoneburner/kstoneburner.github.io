@@ -140,6 +140,9 @@ function init(){
 
 	current_vax_img.style.maxWidth = pageMaxWidth + "px"; 
 
+	var vax_jpg = document.getElementById("vax_jpg")
+	vax_jpg.style.height = death_jpg.getBoundingClientRect().height + "px";
+
 	initChart();
 
     }//*** END Each Infographic type
