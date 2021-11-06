@@ -48,7 +48,7 @@
 	<div id="intro_text">
 		<p>This is the current state of vaccination in the United States. If each county was grouped together by vaccination rates. How would these counties fare throughout the pandemic?</p>
 		<p>Move the slider to see how COVID affected these counties throughout the pandemic. Vaccines weren't deployed till the start of 2021 and didn't see significant vaccination levels till March 2021. Until then, COVID affected all counties similarly. After the COVID surge of July 2021, the affects of vaccines can be seen especially in death rates.</p>
-		<span style="font-size: 1.2em"><strong>Move the Slider</strong></span>
+		<span style="font-size: 1.2em"><strong>Move the Slider to See daily COVID data throughout the pandemic.</strong></span>
 	</div>
 	<div id='main_container'>
 		<div class="slidecontainer">
@@ -63,6 +63,10 @@
 		</div>
 				<div style="display:inline-flex;" width=100%>
 			<div id="table_container"></div>
+			<div style="transform: translateY(25%);">
+				<p>These tiers represent different parts of the country based on current vaccination rates.</p>
+			</div>
+
 			<div ><canvas id="confirm_chart" ></canvas></div>
 			<div ><canvas id="death_chart" ></canvas></div>
 
