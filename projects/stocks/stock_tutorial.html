@@ -1,10 +1,314 @@
 <!DOCTYPE html>
 
+<head>  
+   <style>
+
+   	   body {
+
+   	   	max-width:1024px; 
+
+   	   	font-size: 1.1em;
+
+   	   }
+
+       ul {
+			/* background:#EDEDED; */
+       }
+
+      ol {
+			/* background:#EDEDED; */
+       }
+
+      hr {
+        width: 70%;
+        background-color:#F5DDF5 ;
+        border: none;
+        height: 5px;
+        margin-left:  0px;
+        margin-top: -20px;
+      }
+
+
+      p { margin-top: -5px; }
+      
+      li p { margin-top: 0px; }
+
+      img { margin-left: 0px; }
+      
+      h4 {margin-bottom: 3px}
+
+      .wrapper {
+      	border-left: 6px solid #DAB6DA;
+      	border-style: none none none solid;
+      }
+
+      .wrapper p { margin-left: 15px; }
+
+   </style>
+ </head>
+
 <html>
 
+
 <body>
-<h1>Hello World There is a lot more to come here!!!!!</h1>
+	<h1>Multi-Variate Stock Prediction with the Model Testing Framework</h1>
+	<hr><br/>
+	<div class='wrapper'>
+		<p>
+			Predict future stock prices using a multi-variate Long short-term memory (LSTM) model which is an artificial recurrent neural network (RNN) architecture used in the field of deep learning having feedback connections.<sup><a href="#ref_1">[XXX]</a></sup> LSTM integrates feedback loops which incorporate past information into model creation. Memory of past input is essential for solving sequential learning tasks including language modeling and translation, acoustic modeling of speech, speech synthesis,speech recognition, audio and video data analysis, handwriting recognition and generation, and sequence prediction.<sup><a href="#ref_2">[XXX]</a></sup>
+		</p>
+		<p> This Model Testing Framework (MTF) is designed to be an end-to-end python based solution for experimental prediction modeling and evaluation. The basic framework is a series of layers that are designed with future expansion in mind. The current version is just in it's infancy.</p> 
 
+		<p> Model Testing Framework components</p>
+			
+		<ol>
+			<li>Gather historical pricing data</li>
+		    <li>Build Technical Indicators</li>
+		    <li>Build Multi-Variate LSTM Model</li>
+		    <li>Generate predictions using traditional and ensemble techniques</li>
+		    <li>Evaluate model effectiveness using a simple trading strategy</li>
+		</ol>
+		</div>
+	<h2>Download Stocks</h2>
+	<hr><br/>
+
+	<div class='wrapper'>
+		<p>
+			The has a built-in module to download historical stock data from the alphavantange.co API. Alphavantage has a free tier that allows 500 API calls per day with a maximum of 5 calls per minute<sup><a href="#ref_2">[XXX]</a></sup>. These are ample limits for the purposes of this project. As with the other layers, additional services can be built-out as needed.
+		</p>
+	</div>
+	<h4>Code</h4>
+	<img src="stock_tutorial_input_1.png">
+	<h4>Output</h4>
+	<img src="stock_tutorial_output_1.png">
+
+	<h2>Build DataFrame</h2>
+	<hr><br/>
+	<div class='wrapper'>
+		<p>
+			Initialize the external model_testing() class.
+
+			Build a Pandas DataFrame from the downloaded stock ticker. The entire dataset is used by default however the size can be limited by designating a value for months. This example limits the dataframe to the last 48 months of ticker data.
+		</p>
+
+		<p>The data comprises the following values:</p>
+		<ul>
+			<li><b>Date</b>: Full Date  </li>
+			<li><b>Open</b>: Market open price. </li>
+			<li><b>Symbol</b>: Stock Ticker Symbol </li>
+			<li><b>High</b>: Highest daily trading price. </li>				
+		    <li><b>Low</b>: Lowest daily trading price.</li>
+		    <li><b>Closing</b>: Market Close Trading price.</li>
+		    <li><b>Volume</b>: Total count of shares bought and sold.</li>
+		</ul>
+		<p>By default the Volume is divided by 10,000 to provide a more normal value for modeling.</p>
+	</div>
+
+	<h4>Code</h4>
+	<img src="stock_tutorial_input_2.png">
+	<h4>Output</h4>
+	<img src="stock_tutorial_output_2.png">
+
+
+	<h2>Build Technical Indicators</h2>
+	<hr><br/>
+	<div class='wrapper'>
+	<p>
+		"A technical indicator is a mathematical pattern derived from historical data used by technical traders or investors to predict future price trends and make trading decisions. It uses a mathematical formula to derive a series of data points from past price, volume, and open interest data." <sup><a href="#ref_99">[XXX]</a></sup>
+	</p>
+	<p>Technical indidcators are a staple of the stock analysis market. Generally, these values indicate lagged trends and their utility in predicting next day prices is questionable. Expanding the library of technical indicators is a key future goal. Along with discovering new methods of modeling and evaluating these metrics. The most important aspect of this framework is the ability to easily expand this capability. </p>
+	
+		<p>The Model Testing Framework supports several basic technical indicators:</p>
+		<ul>
+			<li>ema  - Exponential Moving Average</li>
+			<li>dema - Double Exponential Moving Average</li>
+			<li>wma -  Weighted Moving Average</li>
+			<li>sma -  Simple Moving Average</li>
+			<li>cma -  Centered Simple Moving Average</li>
+		</ul>
+
+		<p>Individial technical indicators are defined using a formatted string: <i>indicator_column_length</i> which are stored in a list. This makes it easy to add multiple technical indicators and to quickly experiment with parameters</p>
+		
+
+	</div>
+	<h4>Code</h4>
+	<img src="stock_tutorial_input_5.png">
+	<h4>Output</h4>
+	<img src="stock_tutorial_output_5.png">
+
+	<h2>Visualize Technical Indicators</h2>
+	<hr><br/>
+	<div class="wrapper">
+		<p>
+			Visualize the closing values along with any technical indicators with the plot_cols() function. By default, the entire dataset is visualized.
+		</p>
+	</div>
+	<h4>Code</h4>
+	<img src="stock_tutorial_input_3.png">
+	<h4>Output</h4>
+	<img src="stock_tutorial_output_3.png">
+
+
+	<br/><br/>
+	<div class="wrapper">
+		<p>
+			Plot the last 90 days.
+		</p>
+	</div>
+	<h4>Code</h4>
+	<img src="stock_tutorial_input_4.png">
+	<h4>Output</h4>
+	<img src="stock_tutorial_output_4.png">
+
+	<h2>Build The Models</h2>
+	<hr><br/>
+	
+		<p>
+			MTF has two different modeling techniques: Traditional and Ensemble
+		</p>
+		<ul>
+			<li>
+				<b>Traditional</b>:
+				<div class='wrapper'>
+				<p>
+					The traditional test/train split (TTM) model evaluation method is to separate data into training and test sets. The model is built with the training data with the test data used to evaluate model efficacy. A key assumption is that LSTM models are not very good at predicting the future. The more steps into the future, the less effective the model. 48 months of stock market data is used to model the last 30 days of the dataset. This equates to 98% used for training, with 2% for testing.  
+				</p>
+				</div>
+			</li>
+				
+			<li>
+
+				<b>Historical Ensemble Modeling</b>
+				<div class='wrapper'>
+					<p>The historical ensemble model (HEM) seeks to simulate an uncertain future. HEM changes the model training method to use all available information to make a single overfit future prediction. This is an expensive modeling solution since it requires a separate model for each day predicted, therefore predicting 30 days in the baseline scenario would require 30 models. </p>
+
+					<p>Example: </p>
+
+					<p style="margin-left:50px">47 months = 1,433 Days.</p>
+
+					<p style="margin-left:50px">1433 Days modeled to Predict Day 1434</p>
+
+					<p style="margin-left:50px">1434 Days modeled to Predict Day 1435</p> 
+
+					<p style="margin-left:50px">….</p>
+
+					<p style="margin-left:50px">1463 Days modeled to Predict Day 1464 </p>
+
+					<p>HEM is not an effective technique to use during exploratory modeling since the time to generate models is multiplied by the number of days targeted by results. This expense would be acceptable in a production, where only a single prediction is needed for the unknown future.</p>
+				</div>
+			</li>
+		</ul>
+
+		<p><b>Model Parameters:</b></p>
+		<div class='wrapper' style="margin-left:40px">
+			<ul >
+			
+				<li style="margin-left:-20px"><b>days_to_model</b>: The total number of days to predict. Defines train/test split for TTM modeling. The total number of models to run for HEM.</li>
+				<li style="margin-left:-20px"><b>pa</b>: Number of days to predict ahead. Currently only 1 is supported.</li>
+				<li style="margin-left:-20px"><b>num_layers</b>: Input Layer size for the LSTM model. The greater the number, the more complex the model.</li>
+				<li style="margin-left:-20px"><b>activation</b>: Keras activation function, should be left as relu.</li>
+				<li style="margin-left:-20px"><b>lb</b>: Number of days in the past to consider when processing the model. This is the principal value to experiment with in an LSTM model. This seeks to measure how the past affects the present.</li>
+				<li style="margin-left:-20px"><b>epochs</b>: The total number of iterations to train the model.</li>
+				<li style="margin-left:-20px"><b>patience</b>: Terminates model training early if the training loss values do not decrease. Patience is the number of epochs to wait with no improvement. This value is especially useful for training ensemble models</li>
+				<li style="margin-left:-20px"><b>cols</b>: List of columns used to train the model. The example below adds the technical indicator columns to close, open, high, low, volume</li>
+				<li style="margin-left:-20px"><b>target</b>:This is the column the model is attempting to predict. Generally, it will be the Close column</li>
+			</div>
+		</ul>
+		
+		
+	<h4>Code</h4>
+	<img src="stock_tutorial_input_6.png">
+	<h4>Output</h4>
+	<img src="stock_tutorial_output_6.png">
+
+	<h2>Model Evaluation: Simple trading strategy</h2>
+	<hr><br/>
+	<div class="wrapper">
+		<p>
+			Traditional metrics for model evaluation provide a rough sense of how effective one model is compared to another. A better judge of model efficacy is by simulating a trading strategy based on the model results. The current trading strategy is a basic two step process: Generate trading actions, Calculate the Profit & Loss of those trading actions. 
+		</p>
+		<ol>
+			<li>Generate Buy/Sell/Hold Actions.</li>
+			<ul>
+				<li><b>Hold</b>: Perform no action if a predicted price is within a threshold (3%) of the current price.</li>
+				<li><b>Buy</b>: Perform a buy action if the predicted price is higher than the actual price.</li>
+				<li><b>Sell</b>Perform a sell action if the predicted price is lower than the actual price.</li>
+			</ul>
+			<li style="margin-top:10px">Calculate Profit and Loss</li>
+			<p style="margin-top:0px">Simulate buy/sell/hold actions on the actual closing price values. This metric assumes a single stock share is traded for the calculation. The calculation keeps track of whether a stock was already bought or sold. The evaluator will not purchase additional shares if one is already purchased. Conversely, a share won’t be sold if it has been sold previously.</p>
+		</ol>
+	</div>
+	<h4>Code</h4>
+	<img src="stock_tutorial_input_7.png">
+	<h4>Output</h4>
+	<img src="stock_tutorial_output_7.png">
+
+	<h2>Run it again...</h2>
+	<hr><br/>
+	<p>
+		Run the model again to compare the results. There is a measure of randomness in the Tensorflow models. Results vary depending on the initial starting weights and state of the model.
+	</p>
+	<img src="stock_tutorial_input_8.png">
+	<h4>Output</h4>
+	<img src="stock_tutorial_output_8.png">
+
+	<h2>Perform Multiple Model Runs</h2>
+	<hr><br/>
+	<p>
+		Measure the model variability across 10 model runs. The model_testing object only stores results of the last model run. At the end of each run, the model_testing() including the results are stored to list. This process is time intensive, the ensemble modeling requires building 300 separate models (30days x 10 runs).
+	</p>
+	<h4>Code</h4>
+	<img src="stock_tutorial_input_X.png">
+	<h4>Output</h4>
+	<img src="stock_tutorial_output_X.png">
+
+	<!--
+	<h2>--- Title</h2>
+	<hr><br/>
+	<div class="wrapper">
+		<p>
+			Words to talk about this step.
+		</p>
+	</div>
+	<img src="stock_tutorial_input_X.png">
+	<h4>Output</h4>
+	<img src="stock_tutorial_output_X.png">
+	-->
+
+	<h2>References</h2>
+	<ol>
+	
+		<li >
+			<a 
+				id="ref_1"
+				href="https://python-bloggers.com/2021/01/predict-stock-prices-with-lstm/">
+		    	Predict Stock Prices With LSTM
+			</a>
+		</li>
+	
+		<li >
+			<a 
+				id="ref_2"
+				href="https://corporatefinanceinstitute.com/resources/knowledge/trading-investing/technical-indicator/">
+		    	Long Short-Term Memory (LSTM) Architecture
+			</a>
+		</li>
+
+		<li >
+			<a 
+				id="ref_3"
+				href="https://www.alphavantage.co/documentation/">
+		    	Alpha Vantage API Documentation
+			</a>
+		</li>
+
+		<li >
+			<a 
+				id="ref_99"
+				href="https://corporatefinanceinstitute.com/resources/knowledge/trading-investing/technical-indicator/">
+		    	Technical Indicator Overview
+			</a>
+		</li>
+	</ol>
 </body>
-
 </html>
