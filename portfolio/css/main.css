@@ -1,0 +1,30 @@
+/* XREF Styling */
+body {
+   	   	max-width:1024px; 
+
+   	   	font-size: 1.1em;
+
+   	   	background-color:#ece4d8;
+
+}
+
+hr {
+        
+	background-color:#7c334f;
+    
+    border: none;
+    height: 5px;
+    margin-top:  0px;
+    margin-left: 0px;
+    
+}
+
+/* Classes */
+.wrapper {
+  	border-left: 6px solid #DAB6DA;
+  	border-left: 6px solid #7eb0d2;
+  	border-left: 6px solid #cd596b;
+  	border-left: 6px solid #cd596b;
+  	
+  	border-style: none none none solid;
+}
