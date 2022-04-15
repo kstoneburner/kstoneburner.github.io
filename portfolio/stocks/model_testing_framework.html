@@ -407,6 +407,42 @@
 		</div>
 	</ul>
 
+	<h2 style="margin-top:40px">Frequently Asked Questions</h2>
+	<hr style="margin-top:-20px"><br/>
+	<div style="margin-top:-40px" class="wrapper">
+		<ul >
+		
+			<li style="margin-left:-20px"><b>How do you access the dataframe once the model_testing object is built?</b>
+			<p>The object has a .df property. The Dataframe is stored there. </p></li>
+			<li style="margin-left:-20px"><b>If the predictions work can you save a model, or do you need to rebuild it with every session? </b>
+				<p>
+					There is no built-in method to save the models. They can easily be saved with the pickle module. In a daily trading scenario, the expectation is the models will be rebuilt every day.
+				</p>
+			</li>
+			<li style="margin-left:-20px"><b>Can you make a technical indicator from another technical indicator? Like all of your examples use the closing value, but can you get an exponential moving value from a double exponential moving value?</b>
+				<p>
+					The short answer is yes. The technical indicators, use the format of indicator_column_rate. If the column contains underscores the whole method breaks. To account for this if the column name has underscores, replace the underscores with forward slashes. It would be something like ema_ema/close/5_5. And you’d have to add that as second build technicals run. The first pass updates the dataframe, then the second pass can make a technical from a technical. 
+				</p>
+			</li>
+			<li style="margin-left:-20px"><b>The model results are calculated using your internal functions. Can you access those results if I want to write my own evaluation metric? </b>
+				<p>
+					The results are stored in a results property which is a dictionary containing the results of the traditional and ensemble runs. In this example, you can try print( mt.results ), it’ll display what you’re looking for. 
+				</p>
+			</li>
+			<li style="margin-left:-20px"><b>Instead of predicting technical indicators, Can you apply the technical indicator to the predicted values?</b>
+				<p>
+					That’s under future development. Exploring the relationship between technical indicators and trading decisions is a huge topic. There is a lot of published material discussing this topic, it will be interesting to explore in the future. 
+				</p>
+			</li>
+			<li style="margin-left:-20px"><b>What other kinds of models might you try besides LSTM?</b>
+				<p>
+					I’d like to explore some unsupervised learning techniques. Instead of shoe-horning information into a specific algorithm, can we train with deep learning techniques. Finding these different methods to approach the problem of stock trading is what makes it exciting to study. 
+				</p>
+			</li>
+
+		</div>
+	</ul>
+
 	<h2>References</h2>
 	<hr style="margin-top:-20px"><br/>
 	<div style="margin-top:-40px" class="wrapper">
