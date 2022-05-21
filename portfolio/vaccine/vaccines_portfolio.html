@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+
+<head>  
+   <script src="js/image_paths.js"></script>
+   <script src="js/vaccine.js"></script>
+   <link rel="stylesheet" type="text/css" href="css/vaccine.css"/>
+ </head>
+
+<html>
+
+
+<body onload="init();">
+	<div class="tab">
+
+	  <button class="tablinks" onclick="openTab(event, 'Title')">Title</button>
+	  <button class="tablinks" onclick="openTab(event, 'National')">National</button>
+	  <button class="tablinks" onclick="openTab(event, 'State')">State</button>
+	  <button class="tablinks" onclick="openTab(event, 'County')">County</button> 
+	  <button class="tablinks" onclick="openTab(event, 'Tiers')" style="text-align:top;">Tiers</button>
+	  <button class="tablinks" onclick="openTab(event, 'Conclusion')">Conclusion</button>
+	  <button class="tablinks" onclick="openTab(event, 'Resources')">Resources</button> 
+	  
+  
+	</div>
+
+	<div id="Title"  class="tabcontent">
+		<h1>“An Overview of U.S. COVID Vaccination Rates and Disease Outcomes.”</h1>
+		<hr><br/>
+		<p>By Kurt Stoneburner (March, 2022)</p>
+		<br/><br/>
+	</div>
+
+	<div id="National" class="tabcontent" >
+		<h2>National</h2>
+		<hr><br/>
+		<div class='wrapper'>
+			<p>The COVID-19 pandemic has been well underway for nearly two and a half years and has affected every person in the country.  This is a profile of COVID outcomes and how they are influenced by vaccination rates. This analysis starts with the launch of vaccines on December 25, 2020 and runs through April 22, 2022.  This is a focus on the effects of vaccination on negative COVID outcomes. </p>
+
+			<p>The total measurable costs of the pandemic are staggering.</p>
+
+			<table style="centered">
+
+				<tr>
+					<td>Total COVID Outcomes </td>
+					<td>12/18/2020 - 04/22/2022</td>
+				</tr>
+				<tr>
+					<td>Population</td>
+					<td>314,828,014</td>
+				</tr>
+				<tr>
+					<td>Vaccinated</td>
+					<td>63.34%</td>
+				</tr>
+				<tr>
+					<td>Confirmed Cases</td>
+					<td>76,297,303</td>
+				</tr>
+				<tr>
+					<td>Deaths</td>
+					<td>931,813</td>
+				</tr>
+				<tr>
+					<td>Hospital Bed/Days</td>
+					<td>29,766,952</td>
+				</tr>
+				<tr>
+					<td>ICU Bed Days </td>
+					<td>6,822,997</td>
+				</tr>
+
+			</table>
+		</div>
+
+		<h2>COVID Outcome Costs</h2>
+		<hr><br/>
+		<div class='wrapper'>
+
+			<p><h3>Infection</h3></p>
+			<br/>
+			<p>There are consequences to simply being infected with COVID even without the serious outcome of hospitalization or death. CDC guidelines recommend a person with COVID quarantine for 5 – 10 days. One effects of quarantine, is lost economic opportunity. 76 million cases implies 380 – 550 million day's worth of lost productivity. This is aside from the direct economic effect of restricted movement public health orders ranging from lockdowns to prohibited indoor activities.</p>
+			<p>Another possible outcome is long COVID which is a disparate list of conditions including:</p>
+			<ul>
+				<li>Anxiety/Depression</li>
+				<li>Abnormal Breathing</li> 
+				<li>Fatigue</li>
+			    <li>Chest/throat pain</li>
+		    	<li>Pain</li>
+		    	<li>Headache</li>
+		    	<li>Cognitive Symptoms</li>
+			    <li>Myalgia</li>
+			</ul>
+
+		<p>It is estimated by a study published by the American Medical Association that roughly 30% of those with COVID may experience these symptoms for 3-6 months since infection.</p>
+
+		<p><h3>Hospitalization and ICU</h3></p>
+		<br/>
+		<p>Being sick enough to require hospitalization is a bad outcome in itself. From a public health perspective, the biggest burden of COVID is overwhelming limited hospital resources. The supply of hospital beds is generally inflexible. As people require care, priority is given to the sickest individuals requiring care. Throughout the pandemic, national hospital bed utilization rates fluctuated between a narrow range of 70% - 74.%. Hospitalized patients are at a significantly higher risk of long COVID since the patients were sick enough for the virus to enter their bloodstream.</p>
+
+		<img class='last_image' id='us_hosp_util'/>
+
+		<p>The total available beds represents both inpatient and outpatient beds. The general assumption is that available hospital beds will be filled with the sickest of individuals. Hospital beds used by COVID patients are beds that are unavailable for other sick individuals. The hospital system prioritized care for the sickest of individuals.</p>
+
+		<p><h3>Deaths</h3></p>
+		<p>Nearly a million deaths feels like an overly large number. It implies that everyone should know someone who died due to COVID. But a million deaths are small compared to a population of 314 million. According to CDC Wonder, the US averaged 2,615,392 deaths annually between 2008 & 2018. This translates to a normal average rate of 7,165 deaths per day. COVID added an average of 2,278 deaths per day, an increase of 31% over the normal death rate.</p>
+		<p>The extra deaths that are not attributed to COVID could be suicides, deaths from otherwise preventable causes, lack of access to medical care, even uncounted COVID deaths. Deaths above the norm are deemed excess deaths and may be revealing indicator of the true COVID death toll. In 2020, excess deaths exceeded COVID deaths. </p>
+		<table>
+			<tr>
+				<td>All 2020 Deaths</td>
+				<td>+3,383,729</td>
+			</tr>
+			<tr>
+				<td>Expected Deaths</td>
+				<td>- 2,615,392 </td>
+			</tr>
+			<tr>
+				<td>Covid Deaths</td>
+				<td>- 334,700 </td>
+			</tr>
+			<tr>
+				<td>Excess Deaths</td>
+				<td>= 433,637 </td>
+			</tr>
+		</table>
+
+		<p>22% more people died in 2020 than the expected norm. 3.3 million is a remarkable number of deaths. But only represents 1% of the entire population, most Americans won’t be directly affected by COVID related deaths. That makes a big number seem insignificantly small. </p>
+		</div>
+
+		<h2>National COVID Characteristics: Vaccinations vs Variants</h2>
+		<hr><br/>
+		<div class='wrapper'>
+
+			<p>Initially, increasing vaccination rates appear to correlate with fewer new COVID cases. The effect first appears in April 2020 with 25% vaccination. This also coincides with the highest daily vaccine uptake. During these initial months it appears that vaccines are working to suppress case counts. What’s not seen in the data is a national sense of complacency, that the country had beaten the virus and that collectively society could relax.</p>
+			<p>The story completely shifts by July 2020. As the country relaxes, COVID mutates into the more infectious Delta variant. From this point forward, vaccination rates decouple from the COVID infection rates. Infection rates become closely linked to the COVID mutations.</p>
+			<img class='last_image' id='us_confirm_split'/>
+			<p>New cases increased shortly after Delta became the dominant variant, the Omicron variant was so infectious that cases jumped spiked 680%, from 250 cases per 100k/day to over 1700 cases per 100k/day. Based on infection rates it is likely Omicron became dominant 3-4 weeks before it was officially recognized as a dominant variant. The rapid decline in Omicron cases is likely due to variant running out of population to infect. It may have been so virulent that it (relatively) burned itself out.</p>
+			<p>Vaccines have an estimated 35% - 45% efficacy against infection from the Omicron variant. Reduced vaccine efficacy combined with relatively low vaccination rates suggests vaccines offer little population protection against symptomatic infection.</p>
+			<p>Outcome rates for Hospitalizations, ICU, and Daily Deaths follow a similar pattern. There’s the decline at 25% vaccination, then an explosion of cases after Delta and Omicron become dominant. Hospitalizations and ICU are counted as the sum total of beds used per week. Unlike Cases and Deaths which are counted as singular events, hospital and ICU stays run multiple days if not weeks. These values count the amounts of bed days in use for patients with COVID.</p>
+			<img class='last_image' id='us_hosp_split'/>
+			<img class='last_image' id='us_icu_split'/>
+			<img class='last_image' id='us_death_split'/>
+		</div>
+	</div>
+
+	
+	<div id="State" class="tabcontent active" >
+
+		<h2>State COVID Characteristics</h2>
+		<hr><br/>
+		<div class='wrapper'>
+
+			<p>National statistics provide a general outlook for the country. However, outcomes vary greatly by geography. This section explores differences in state outcomes starting with vaccine rollout of 2020-12-18 to 2022-04-22. The result of COVID outcomes are as diverse as the states themselves.</p>
+			<p>These plots are centered around the U.S. mean for each outcome. This is a relative measure of how each state compares to the whole.</p>
+			<br/>
+			<div class='image_container'>
+				<img class='last_image' id='state_geo_vax_timeline'/>
+				<button class='animate_image' id='state_geo_vax_timeline' onclick="animate_image(this)">&#x23F5;</button>
+ 
+			</div>
+			
+			<p>The west coast and northeast have the highest vaccination rates in the country. The expectation is these states will have better outcomes. That isn’t entirely the case.</p>
+			<img class='last_image' id='state_geo_confirm_timeline'/>
+			<p>Case count versus vaccination has mixed results across the entire country. Some states meet expectations and others vary greatly. High Vaccination percentages are not strongly linked to lower cases rates in many states. For Example, Maryland has one of the highest vaccination rates and lowest per capita case rates. Where New York and Rhode Island have similarly high vaccination rates and nearly double the case rates.</p>
+			<table>
+				<tr>
+					<th colspan=6>Expected Infection Outcomes </th>
+				</tr>
+				<tr>
+					<th colspan=3>High Vaccination, Low Cases </th>
+					<th colspan=3>Low Vaccination, High Cases</th>
+				</tr>
+				<tr>
+					<th>State</th>
+					<th>Vaccination Rate</th>
+					<th>Cases (per 100k)</th>
+					<th>State</th>
+					<th>Vaccination Rate</th>
+					<th>Cases (per 100k)</th>
+				</tr>
+				<tr><td>Maryland</td><td>74.4%</td><td>12,830</td><td>Kentucky</td><td>55.1%</td><td>24,190</td></tr>
+				<tr><td>Oregon</td><td>68.0%</td><td>16,476</td><td>West Virginia</td><td>56.2%</td><td>23,903</td></tr>
+				<tr><td>District of Columbia</td><td>69.9%</td><td>16,693</td><td>South Carolina</td><td>58.8%</td><td>23,300</td></tr>
+				<tr><td>Connecticut</td><td>77.6%</td><td>18,733</td><td>Arizona</td><td>60.0%</td><td>21,661</td></tr>
+				<tr><td>Washington</td><td>69.6%</td><td>18,507</td><td>Tennessee</td><td>53.7%</td><td>21,287</td></tr>
+			</table>
+			<table>
+				<tr>
+					<th colspan=6>Unexpected Infection Outcomes </th>
+				</tr>
+				<tr>
+					<th colspan=3>Low Vaccination, Low Cases </th>
+					<th colspan=3>High Vaccination, High Cases</th>
+				</tr>
+				<tr>
+					<th>State</th>
+					<th>Vaccination Rate</th>
+					<th>Cases (per 100k)</th>
+					<th>State</th>
+					<th>Vaccination Rate</th>
+					<th>Cases (per 100k)</th>
+				</tr>
+				<tr><td>Missouri</td><td>52.6%</td><td>15,600</td><td>Rhode Island</td><td>73.1%</td><td>24,190</td></tr>
+				<tr><td>Iowa</td><td>60.3%</td><td>15,737</td><td>Florida</td><td>66.2%</td><td>23,903</td></tr>
+				<tr><td>Utah</td><td>62.7%</td><td>15,862</td><td>New York</td><td>76.9%</td><td>23,300</td></tr>
+				<tr><td>Virginia</td><td>60.0%</td><td>16,131</td><td>Delaware</td><td>66.2%</td><td>21,661</td></tr>
+				<tr><td>South Dakota</td><td>59.4%</td><td>16,314</td><td>New Jersey</td><td>71.2%</td><td>21,287</td></tr>
+			</table>		
+			<p>Like national trends, the severe outcomes of hospitalization, ICU and death trend similarly. Disparity and geography seem to be linked. Some states do well overall, while others are hit particularly hard. Regional differences may have a greater impact on outcomes than vaccines. Not all states have equal access to hospital care. Densely populated counties have greater access to hospital resources, while care may be limited in rural areas. </p>
+			<p>Generally, state level vaccination and outcome rates follow expectations. The 5 highest vaccinated counties had hospitalization and ICU rates below the national average, while the 5 lowest vaccinated states had infection rates above the national average.</p>
+			<p>There were only three states that had low vaccination rates and low case rates. This gives further evidence that Vaccinations tend to reduce negative outcomes.</p>
+			
+			<table>
+				<tr>
+					<th colspan=6>Expected Hospitalization Outcomes </th>
+				</tr>
+				<tr>
+					<th colspan=3>High Vaccination, Low Hospitalization </th>
+					<th colspan=3>Low Vaccination, High Hospitalization</th>
+				</tr>
+				<tr>
+					<th>State</th>
+					<th>Vaccination Rate</th>
+					<th>Cases (per 100k)</th>
+					<th>State</th>
+					<th>Vaccination Rate</th>
+					<th>Cases (per 100k)</th>
+				</tr>
+				<tr><td>Massachusetts</td><td>70.5%</td><td>5,337</td><td>West Virginia</td><td>56.2%</td><td>15,498</td></tr>
+				<tr><td>New Hampshire</td><td>65.8%</td><td>5,592</td><td>Missouri</td><td>52.6%</td><td>13,552</td></tr>
+				<tr><td>Oregon</td><td>68.0%</td><td>6,199</td><td>Kentucky</td><td>55.1%</td><td>13,526</td></tr>
+				<tr><td>Washington</td><td>69.6%</td><td>6,339</td><td>Georgia</td><td>49.2%</td><td>12,949</td></tr>
+				<tr><td>Colorado</td><td>68.4%</td><td>6,617</td><td>Nevada</td><td>57.6%</td><td>11,901</td></tr>
+			</table>
+			<table>
+				<tr>
+					<th colspan=6>Unexpected Hospitalization Outcomes </th>
+				</tr>
+				<tr>
+					<th colspan=3>Low Vaccination, Low Hospitalization </th>
+					<th colspan=3>High Vaccination, High Hospitalization</th>
+				</tr>
+				<tr>
+					<th>State</th>
+					<th>Vaccination Rate</th>
+					<th>Cases (per 100k)</th>
+					<th>State</th>
+					<th>Vaccination Rate</th>
+					<th>Cases (per 100k)</th>
+				</tr>
+				<tr><td>Vermont</td><td>59.4%</td><td>3,088</td><td>Distric Of Columbia</td><td>69.9%</td><td>13,082</td></tr>
+				<tr><td>Utah</td><td>62.7%</td><td>5,573</td><td>Florida</td><td>66.2%</td><td>11,601</td></tr>
+				<tr><td>Iowa</td><td>60.3%</td><td>6,431</td><td>Delaware</td><td>66.2%</td><td>10,962</td></tr>
+				<tr><td></td>    <td></td>     <td></td><td>Pennsylvania</td><td>64.8%</td><td>10,805</td></tr>
+				<tr><td></td>    <td></td>     <td></td><td>New York</td><td>74.9%</td><td>10,419</td></tr>
+			</table>
+			<img class='last_image' id='state_geo_hosp_timeline'/>
+			<img class='last_image' id='state_geo_icu_timeline'/>		
+
+			<p>Regional differences aside there appears to be strong evidence that higher vaccine rates reduce the incidence of death. The states with the lowest death rates are all above the vaccination national mean, while the lowest vaccinated states have the highest death rates. </p>
+			<p>Conversely, there are only three states with low vaccination rates and low deaths. This is fairly strong evidence that vaccines reduce the death rate.</p>
+			<table>
+				<tr>
+					<th colspan=6>Expected Death Outcomes </th>
+				</tr>
+				<tr>
+					<th colspan=3>High Vaccination, Low Deaths </th>
+					<th colspan=3>Low Vaccination, High Deaths</th>
+				</tr>
+				<tr>
+					<th>State</th>
+					<th>Vaccination Rate</th>
+					<th>Cases (per 100k)</th>
+					<th>State</th>
+					<th>Vaccination Rate</th>
+					<th>Cases (per 100k)</th>
+				</tr>
+				<tr><td>District of Columbia</td><td>69.9%</td><td>85</td> <td>West Virginia</td><td>56.2%</td><td>320</td></tr>
+				<tr><td>Washington</td>          <td>69.9%</td><td>125</td><td>Alabama</td>      <td>47.2%</td><td>309</td></tr>
+				<tr><td>New Hampshire</td>       <td>65.8%</td><td>134</td><td>Oklahoma</td>     <td>53.6%</td><td>303</td></tr>
+				<tr><td>Colorado</td>            <td>68.4%</td><td>135</td><td>Arizona</td>      <td>60.0%</td><td>302</td></tr>
+				<tr><td>Minnesota</td>           <td>65.6%</td><td>137</td><td>Tennessee</td>    <td>53.7%</td><td>283</td></tr>
+			</table>
+			<table>
+				<tr>
+					<th colspan=6>Unexpected Death Outcomes </th>
+				</tr>
+				<tr>
+					<th colspan=3>Low Vaccination, Low Deaths </th>
+					<th colspan=3>High Vaccination, High Deaths</th>
+				</tr>
+				<tr>
+					<th>State</th>
+					<th>Vaccination Rate</th>
+					<th>Cases (per 100k)</th>
+					<th>State</th>
+					<th>Vaccination Rate</th>
+					<th>Cases (per 100k)</th>
+				</tr>
+				<tr><td>Utah</td>              <td>62.7%</td><td>69</td> <td>New Mexico</td>  <td>69.9%</td><td>251</td></tr>
+				<tr><td>Vermont</td>           <td>59.4%</td><td>84</td><td>Florida</td>      <td>66.2%</td><td>246</td></tr>
+				<tr><td>Nebraska</td>          <td>58.0%</td><td>100</td><td>Pennsylvania</td><td>64.8%</td><td>239</td></tr>
+				<tr><td>North Dakota</td>      <td>51.3%</td><td>133</td><td></td>            <td></td>     <td></td></tr>
+				<tr><td>North Carolina</td>    <td>59.2%</td><td>163</td><td></td>            <td></td>     <td></td></tr>
+			</table>
+			<img class='last_image' id='state_geo_death_timeline'/>
+		</div>
+	
+	</div>
+
+	<div id="County" class="tabcontent" >
+		<h2>County COVID Characteristics</h2>
+		<hr><br/>
+		<div class='wrapper'>
+
+			<p>County level vaccinations reveals a diversity of vaccination rates within individual states. Urban counties have the highest vaccination rates while rural counties trend lower. The west coast counties and northeast counties exemplify this distribution. This is typified by the highest vaccination rates being the densely populated coastal urban centers, while the relatively rural inland areas have lower vaccination rates.  </p>
+			<p>Many states with low vaccination rates tend to have a few individual counties with high vaccination rates. Counties in West Virgina, Kentucky and Ohio are examples of this pattern.</p>
+
+			<img class='last_image' id='county_geo_vax_timeline'/>
+
+			<p>County level total confirmed case rates appear to have little overall correlation with vaccination rates. </p>
+
+			<img class='last_image' id='county_geo_confirm_timeline'/>
+			
+			<p>Hospitalization rates demonstrate that high case rates are focused of a small subset of counties. Hospitalizations appear to be regionally concentrated to relatively few counties where the hardest hit are hit very hard. This implies there is a lack of regional care across many states and demonstrates that medical care is not evenly distributed across the country.</p>
+			
+			<img class='last_image' id='county_geo_hosp_timeline'/>
+			
+			<p>There are many counties that do not have access to ICU beds. Like hospitalizations, ICU capacity is focused on much smaller subset of counties. Patients are concentrated within the relatively few counties with intensive care facilities. This is particularly true in the Midwest and South. </p>
+
+			<img class='last_image' id='county_geo_icu_timeline'/>
+			
+			<p>Like the other data points, deaths tend to track lower with higher vaccinations counts. The low vaccinated states of West Virginia, Kentucky and Ohio do have high death rates. However there are a few counties with low vaccinations rate and low lower death rates, and conversely, high vaccination with high death. </p>
+
+			<img class='last_image' id='county_geo_death_timeline'/>
+			
+
+		</div>
+		<h2>Exploration: Overall County Outcomes</h2>
+		<hr><br/>
+		<div class='wrapper'>
+
+			<p>Plotting total COVID outcomes by county vaccination rates reveals some national characteristics. Generally, there doesn’t appear to be much correlation between vaccines and Confirmed Cases which predominantly cluster between 17,000 and 22,000 total cases per 100k population. Typically, most counties have infection rates of 17% - 22% of total population (not counting reinfections) regardless of vaccination rates.</p>
+
+			<p>In terms of total Hospitalizations and ICU bed days, there appears to be little correlation with vaccination. There are many counties without access to ICU care, those are reflected as 0 beds.</p>
+
+			<p>The overall death values are promising. There is a clear general trend, that as vaccination increases, total death rates are lower.</p>
+
+			<img class='last_image' id='date_vax_quad_timeline'/>
+
+			<p></p>
+			<p></p>
+
+		</div>
+	</div>
+
+	<div id="Tiers" class="tabcontent" >
+		<h2>Distribution of Vaccination Rates by County</h2>
+		<hr><br/>
+		<div class='wrapper'>
+
+			<p>The current evidence so far leads to a convincing link between increased vaccination and lower death rates and little evidence that vaccines reduce total transmission, hospitalization bed days and ICU bed days. </p>
+			<p>The distribution of vaccinated counties has an Interquartile Range of 43.8% and 59.1% Vaccination. Half of all counties fall within this range.</p>
+
+
+			<img class='last_image' id='distrib_vax'/>
+
+			<p>The most vaccinated population accounts for 58% of the entire population and is close to the overall U.S. mean of 63% vaccination. Using these distribution values, the country can be divided into counties with relatively Low, Medium, and High vaccination rates.</p>
+
+			<img class='last_image' id='tier_vax_counties'/>
+
+
+		</div>
+		<h2>Vaccination Tiers: Outcomes over time </h2>
+		<hr><br/>
+		<div class='wrapper'>
+
+			<p>These plots portray the total outcomes over time by vaccination tier since vaccines were first available. </p>
+
+			<img class='last_image' id='tier_vax_quad_timeline'/>
+
+			<p><h3>Vaccination Tiers: Confirmed Cases </h3></p>
+			<br/>
+			<p>All three vaccination tiers had roughly the same level of COVID infections until the Delta variant wave. The highest vaccinated counties maintained roughly 25% fewer infections until the Omicron wave. During Omicron the entire country experienced roughly the same level of infection regardless of vaccination levels. As the Omicron wave waned the difference between the vaccinated tiers is significantly smaller.  </p>
+
+			<p>There are likely a confluence of factors that contributed to the Omicron surge.</p>
+
+			<ul>
+				
+				<li>35%-45% Vaccine Effectiveness against symptomatic disease </li>
+			    <li>Christmas Holidays Gatherings </li>
+			    <li>Pandemic Fatigue </li>
+				<li>Omicron BA.1 is 35% more Infectious than the Delta variant</li>
+			</ul>
+
+			<p>As COVID mutates it is likely the virus is becoming more effective at infecting vaccinated individuals with symptomatic disease.</p>
+
+			<p><h3>Hospitalizations and ICU</h3></p>
+			<br/>
+
+			<p>The Low vaccinated counties have much lower hospitalization rates than the other vaccination tiers. While the ICU rates fluctuate compared to the medium and high tiers. This is likely due to a scarcity of care in these counties, fewer beds are used because there are fewer overall beds.</p>
+
+			<p>There are numerous counties that don’t have ICU facilities and several without access to hospitals. As demonstrated in the county hospitalization and ICU graphs, hospitalization and ICU cases tend to be overly concentrated in a small subset of counties.</p>
+
+			<p>The Low vaccination counties skew towards smaller populations which generally have poor access to hospital care. High Vaccinated counties have 20% fewer Hospitalization days, and 25% fewer ICU days.</p>
+
+			<p><h3>Deaths</h3></p>
+			<br/>
+
+			<p>At all levels the data definitively demonstrates that counties with higher vaccination rates have significantly lower overall death rates.</p>
+
+			<table>
+				<tr><th>Vaccination Tier</th><th>Deaths (per 100k)</th></tr>
+				<tr><td>Low:  < 43.8%</td><td>311</td></tr>
+				<tr><td>Medium: 43.8% - 53.1%</td><td>250</td></tr>
+				<tr><td>High: > 59.1%</td><td>164</td></tr>
+			</table>
+
+			<p></p>
+		</div>
+	
+		<h2>A Final comment on hospitalization Utilization</h2>
+		<hr><br/>
+		<div class='wrapper'>
+
+			<p>The utilization of hospital resources reveals some interesting disparities.</p>
+
+			<p><i>All Hospital Beds</i> is the ratio of occupied beds to available beds. This metric demonstrates the inelastic nature of hospital resources. At all vaccination levels, utilization varies by no more than 5%. This implies limited medical care resources, that must be prioritized for the sickest individuals. All hospital beds refers to all inpatient and outpatient beds including ER facilities. The total number represents a community’s ability to provide a minimum of care. High Vaccination counties have a higher percentage of available total beds, which implies higher per capita access to hospital beds. Whereas Low vaccinated rural counties offer roughly 61% of beds as inpatient. This implies a much stronger reliance on outpatient care.</p>
+
+			<img class='last_image' id='util_hosp_quad'/>
+
+			<p><h3>All Hospital Beds</h3></p>
+			<br/>
+			<p>It appears there is a general country wide push to add more inpatient hospital beds nationwide. Even in High and Medium vaccination tiers, hospital bed utilization only increased by 5%. It’s even less for the low vaccination rural tier. This is evidence of a hospital system straining to expand capacity.</p>
+
+			<p><h3>ICU Utilization</h3></p>
+			<br/>
+
+			<p>Low Vaccination ICU utilization dropped 10% from initial vaccination to the Delta surge. It is possible that this is a scaling down of rural resources as case levels started to decline. High vaccination ICU usage only varies by a few percent. As COVID cases decline these beds are filled by a non-COVID patient population that require critical care. This implies that people who needed critical care likely didn’t get it at the height of the pandemic. </p>
+
+			<p><h3>COVID Bed Utilization</h3></p>
+			<br/>
+
+			<p>The differences in severe outcomes are significant. Even with limited ICU capacity 29% of low vaccinated ICUs are filled with COVID patients compared to 17% with the higher tier.</p>
+
+		</div>
+	</div>
+
+	<div id="Conclusion" class="tabcontent" >
+		<h2>Conclusion</h2>
+		<hr><br/>
+		<div class='wrapper'>
+
+			<p>It is difficult to equate a direct linear relationship between vaccination and outcomes. The data doesn’t describe the outcomes of vaccinated individuals. Community COVID strategies vary greatly by county and state and vaccinations are only part of a COVID mitigation strategy.</p>
+			<p>Vaccines were likely very effective in preventing symptomatic infection against the ancestral strains of COVID. That efficacy was reduced with the Delta variant, and further reduced again Omicron BA.1. The current difference is total cases between High and Low vaccination tiers is roughly 5%. A reformulated vaccine will be needed to lower infection rates.</p>
+
+		</div>
+	</div>
+
+	<div id="Resources" class="tabcontent" >
+		<h2>Datasets</h2>
+		<hr><br/>
+		<div class='wrapper'>
+
+			<ul>
+				<li>
+					<p>
+						<a 
+							href="https://www.census.gov/data/tables/time-series/demo/popest/2010s-counties-detail.html">
+					    	Census Bureau: County Population by Characteristics: 2010-2019
+						</a>
+					</p>
+					<p>Data set contains 9 years of population and demographics for each U.S. county. Only the population values were used.</p>
+				</li>
+				<li>
+					<p>
+						<a 
+							href="https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_time_series">
+					    	John's Hopkins COVID Data
+						</a>
+					</p>
+					<p>Provides daily confirmed case and COVID death counts for each county by date. The data is 	structured using the counties as rows, and each date is a column.</p>
+					<p>When deaths and cases are combined by county and date, the dataset comprises 2.6 million 	rows, providing total cases, new cases, Total deaths and new deaths</p>
+				</li>
+				<li>
+					<p>
+						<a 
+							href="https://data.cdc.gov/Vaccinations/COVID-19-Vaccinations-in-the-United-States-County/8xkx-amqh">
+					    	CDC: COVID-19 Vaccinations in the United States, County
+						</a>
+					</p>
+					<p>Vaccination Rates are combined with the death and confirmed data. This data set begin on 2020-12-18 which is the official start of US vaccination efforts </p>
+				</li>
+				<li>
+					<p>
+						<a 
+							href="https://healthdata.gov/Hospital/COVID-19-Reported-Patient-Impact-and-Hospital-Capa/anag-cw7u">
+					    	COVID-19 Reported Patient Impact and Hospital Capacity by Facility
+						</a>
+					</p>
+					<p>Weekly hospital utilization from every hospital in the country. As reported by each individual Hospital. The hospital population includes all hospitals registered with Centers for Medicare & Medicaid Services (CMS) as of June 1, 2020. It includes non-CMS hospitals that have reported since July 15, 2020. Individual hospitals (459,883 rows) are combined into county level totals and combined with weekly cases, deaths, and vaccinations with a final row count of 172,239 elements. These datasets were further aggregated to State and National levels. </p>
+				</li>
+			</ul>
+
+		</div>
+
+		<h2>References</h2>
+		<hr><br/>
+		<div class='wrapper'>
+			<ul>
+				<li>
+					<a href="https://www.axios.com/2022/05/07/long-covid-next-health-crisis">
+					Axios
+					</a>
+				</li>
+				<li>
+					<a href="https://jamanetwork.com/journals/jamanetworkopen/fullarticle/2776560">
+					JAMA Open Network
+					</a>
+				</li>
+				<li>
+					<a href="https://www.axios.com/2022/05/07/long-covid-next-health-crisis">
+					CDC Quarantine Guidelines
+					</a>
+				</li>
+				<li>
+					<a href="https://www.healthline.com/health-news/heres-when-we-may-have-enough-covid-19-vaccine-for-herd-immunity">
+					Herd Immunity
+					</a>
+				</li>
+				<li>
+					
+					<a href="https://www.healthdata.org/covid/covid-19-vaccine-efficacy-summary">Vaccine Efficacy</a>
+					
+				</li>
+				<li>
+					<a href="https://www.cdc.gov/vaccines/acip/meetings/downloads/slides-2022-04-20/02-COVID-Link-Gelles-508.pdf">CDC Vaccine Efficacy</a>
+				</li>
+			</ul>
+			<p></p>
+			<p></p>
+			<p></p>
+			<p></p>
+			<p></p>
+
+		</div>
+	</div>
+</body>
+</html>
+
