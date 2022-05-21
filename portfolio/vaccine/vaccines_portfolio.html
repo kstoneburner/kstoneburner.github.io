@@ -10,27 +10,50 @@
 
 
 <body onload="init();">
-	<div class="tab">
+	<div class='header'>
+		<div >
+			<h1>“An Overview of U.S. COVID Vaccination Rates and Disease Outcomes.”</h1>
+			<hr><br/>
+			<p>By Kurt Stoneburner (March, 2022)</p>
+			<br/><br/>
+		</div>
 
-	  <button class="tablinks" onclick="openTab(event, 'Title')">Title</button>
-	  <button class="tablinks" onclick="openTab(event, 'National')">National</button>
-	  <button class="tablinks" onclick="openTab(event, 'State')">State</button>
-	  <button class="tablinks" onclick="openTab(event, 'County')">County</button> 
-	  <button class="tablinks" onclick="openTab(event, 'Tiers')" style="text-align:top;">Tiers</button>
-	  <button class="tablinks" onclick="openTab(event, 'Conclusion')">Conclusion</button>
-	  <button class="tablinks" onclick="openTab(event, 'Resources')">Resources</button> 
+		<div class="tab">
+
+		  <button class="tablinks" onclick="openTab(event, 'National')">National Overview</button>
+		  <button class="tablinks" onclick="openTab(event, 'State')">State COVID</button>
+		  <button class="tablinks" onclick="openTab(event, 'County')">County COVID</button> 
+		  <button class="tablinks" onclick="openTab(event, 'Tiers')" style="text-align:top;">COVID By Tiers</button>
+		  <button class="tablinks" onclick="openTab(event, 'Conclusion')">Conclusion</button>
+		  <button class="tablinks" onclick="openTab(event, 'Resources')">Resources</button> 
+		  
 	  
-  
+		</div>
+		<br/>
 	</div>
+	<!--- This is just Spacer Content...It Does Nothing -->
+	<div id='header_filler'>
+		<div >
+			<h1>“An Overview of U.S. COVID Vaccination Rates and Disease Outcomes.”</h1>
+			<hr><br/>
+			<p>By Kurt Stoneburner (March, 2022)</p>
+			<br/><br/>
+		</div>
 
-	<div id="Title"  class="tabcontent">
-		<h1>“An Overview of U.S. COVID Vaccination Rates and Disease Outcomes.”</h1>
-		<hr><br/>
-		<p>By Kurt Stoneburner (March, 2022)</p>
-		<br/><br/>
+		<div class="tab">
+
+		  <button class="tablinks" onclick="openTab(event, 'National')">National Overview</button>
+		  <button class="tablinks" onclick="openTab(event, 'State')">State COVID</button>
+		  <button class="tablinks" onclick="openTab(event, 'County')">County COVID</button> 
+		  <button class="tablinks" onclick="openTab(event, 'Tiers')" style="text-align:top;">COVID By Tiers</button>
+		  <button class="tablinks" onclick="openTab(event, 'Conclusion')">Conclusion</button>
+		  <button class="tablinks" onclick="openTab(event, 'Resources')">Resources</button> 
+		  
+	  
+		</div>
 	</div>
-
-	<div id="National" class="tabcontent" >
+	<!--- END Spacer Content... -->
+	<div id="National" class="tabcontent active" >
 		<h2>National</h2>
 		<hr><br/>
 		<div class='wrapper'>
@@ -133,6 +156,8 @@
 			<p>Initially, increasing vaccination rates appear to correlate with fewer new COVID cases. The effect first appears in April 2020 with 25% vaccination. This also coincides with the highest daily vaccine uptake. During these initial months it appears that vaccines are working to suppress case counts. What’s not seen in the data is a national sense of complacency, that the country had beaten the virus and that collectively society could relax.</p>
 			<p>The story completely shifts by July 2020. As the country relaxes, COVID mutates into the more infectious Delta variant. From this point forward, vaccination rates decouple from the COVID infection rates. Infection rates become closely linked to the COVID mutations.</p>
 			<img class='last_image' id='us_confirm_split'/>
+
+
 			<p>New cases increased shortly after Delta became the dominant variant, the Omicron variant was so infectious that cases jumped spiked 680%, from 250 cases per 100k/day to over 1700 cases per 100k/day. Based on infection rates it is likely Omicron became dominant 3-4 weeks before it was officially recognized as a dominant variant. The rapid decline in Omicron cases is likely due to variant running out of population to infect. It may have been so virulent that it (relatively) burned itself out.</p>
 			<p>Vaccines have an estimated 35% - 45% efficacy against infection from the Omicron variant. Reduced vaccine efficacy combined with relatively low vaccination rates suggests vaccines offer little population protection against symptomatic infection.</p>
 			<p>Outcome rates for Hospitalizations, ICU, and Daily Deaths follow a similar pattern. There’s the decline at 25% vaccination, then an explosion of cases after Delta and Omicron become dominant. Hospitalizations and ICU are counted as the sum total of beds used per week. Unlike Cases and Deaths which are counted as singular events, hospital and ICU stays run multiple days if not weeks. These values count the amounts of bed days in use for patients with COVID.</p>
@@ -143,7 +168,7 @@
 	</div>
 
 	
-	<div id="State" class="tabcontent active" >
+	<div id="State" class="tabcontent " >
 
 		<h2>State COVID Characteristics</h2>
 		<hr><br/>
@@ -159,7 +184,13 @@
 			</div>
 			
 			<p>The west coast and northeast have the highest vaccination rates in the country. The expectation is these states will have better outcomes. That isn’t entirely the case.</p>
-			<img class='last_image' id='state_geo_confirm_timeline'/>
+			
+	
+			<div class='image_container'>
+				<img class='last_image' id='state_geo_confirm_timeline'/>
+				<button class='animate_image' id='state_geo_confirm_timeline' onclick="animate_image(this)">&#x23F5;</button>
+ 			</div>
+
 			<p>Case count versus vaccination has mixed results across the entire country. Some states meet expectations and others vary greatly. High Vaccination percentages are not strongly linked to lower cases rates in many states. For Example, Maryland has one of the highest vaccination rates and lowest per capita case rates. Where New York and Rhode Island have similarly high vaccination rates and nearly double the case rates.</p>
 			<table>
 				<tr>
@@ -253,8 +284,16 @@
 				<tr><td></td>    <td></td>     <td></td><td>Pennsylvania</td><td>64.8%</td><td>10,805</td></tr>
 				<tr><td></td>    <td></td>     <td></td><td>New York</td><td>74.9%</td><td>10,419</td></tr>
 			</table>
-			<img class='last_image' id='state_geo_hosp_timeline'/>
-			<img class='last_image' id='state_geo_icu_timeline'/>		
+
+			<div class='image_container'>
+				<img class='last_image' id='state_geo_hosp_timeline'/>
+				<button class='animate_image' id='state_geo_hosp_timeline' onclick="animate_image(this)">&#x23F5;</button>
+ 			</div>
+
+			<div class='image_container'>
+				<img class='last_image' id='state_geo_icu_timeline'/>		
+				<button class='animate_image' id='state_geo_icu_timeline' onclick="animate_image(this)">&#x23F5;</button>
+ 			</div>
 
 			<p>Regional differences aside there appears to be strong evidence that higher vaccine rates reduce the incidence of death. The states with the lowest death rates are all above the vaccination national mean, while the lowest vaccinated states have the highest death rates. </p>
 			<p>Conversely, there are only three states with low vaccination rates and low deaths. This is fairly strong evidence that vaccines reduce the death rate.</p>
@@ -302,12 +341,16 @@
 				<tr><td>North Dakota</td>      <td>51.3%</td><td>133</td><td></td>            <td></td>     <td></td></tr>
 				<tr><td>North Carolina</td>    <td>59.2%</td><td>163</td><td></td>            <td></td>     <td></td></tr>
 			</table>
-			<img class='last_image' id='state_geo_death_timeline'/>
+			<div class='image_container'>
+				<img class='last_image' id='state_geo_death_timeline'/>
+				<button class='animate_image' id='state_geo_death_timeline' onclick="animate_image(this)">&#x23F5;</button>
+ 			</div>
+
 		</div>
 	
 	</div>
 
-	<div id="County" class="tabcontent" >
+	<div id="County" class="tabcontent " >
 		<h2>County COVID Characteristics</h2>
 		<hr><br/>
 		<div class='wrapper'>
@@ -315,23 +358,39 @@
 			<p>County level vaccinations reveals a diversity of vaccination rates within individual states. Urban counties have the highest vaccination rates while rural counties trend lower. The west coast counties and northeast counties exemplify this distribution. This is typified by the highest vaccination rates being the densely populated coastal urban centers, while the relatively rural inland areas have lower vaccination rates.  </p>
 			<p>Many states with low vaccination rates tend to have a few individual counties with high vaccination rates. Counties in West Virgina, Kentucky and Ohio are examples of this pattern.</p>
 
-			<img class='last_image' id='county_geo_vax_timeline'/>
+			
+			<div class='image_container'>
+				<img class='last_image' id='county_geo_vax_timeline'/>		
+				<button class='animate_image' id='county_geo_vax_timeline' onclick="animate_image(this)">&#x23F5;</button>
+ 			</div>
 
 			<p>County level total confirmed case rates appear to have little overall correlation with vaccination rates. </p>
 
-			<img class='last_image' id='county_geo_confirm_timeline'/>
+			<div class='image_container'>
+				<img class='last_image' id='county_geo_confirm_timeline'/>		
+				<button class='animate_image' id='county_geo_confirm_timeline' onclick="animate_image(this)">&#x23F5;</button>
+ 			</div>
 			
 			<p>Hospitalization rates demonstrate that high case rates are focused of a small subset of counties. Hospitalizations appear to be regionally concentrated to relatively few counties where the hardest hit are hit very hard. This implies there is a lack of regional care across many states and demonstrates that medical care is not evenly distributed across the country.</p>
 			
-			<img class='last_image' id='county_geo_hosp_timeline'/>
+			<div class='image_container'>
+				<img class='last_image' id='county_geo_hosp_timeline'/>		
+				<button class='animate_image' id='county_geo_hosp_timeline' onclick="animate_image(this)">&#x23F5;</button>
+ 			</div>
 			
 			<p>There are many counties that do not have access to ICU beds. Like hospitalizations, ICU capacity is focused on much smaller subset of counties. Patients are concentrated within the relatively few counties with intensive care facilities. This is particularly true in the Midwest and South. </p>
 
-			<img class='last_image' id='county_geo_icu_timeline'/>
+			<div class='image_container'>
+				<img class='last_image' id='county_geo_icu_timeline'/>		
+				<button class='animate_image' id='county_geo_icu_timeline' onclick="animate_image(this)">&#x23F5;</button>
+ 			</div>
 			
 			<p>Like the other data points, deaths tend to track lower with higher vaccinations counts. The low vaccinated states of West Virginia, Kentucky and Ohio do have high death rates. However there are a few counties with low vaccinations rate and low lower death rates, and conversely, high vaccination with high death. </p>
 
-			<img class='last_image' id='county_geo_death_timeline'/>
+			<div class='image_container'>
+				<img class='last_image' id='county_geo_death_timeline'/>		
+				<button class='animate_image' id='county_geo_death_timeline' onclick="animate_image(this)">&#x23F5;</button>
+ 			</div>
 			
 
 		</div>
@@ -345,7 +404,10 @@
 
 			<p>The overall death values are promising. There is a clear general trend, that as vaccination increases, total death rates are lower.</p>
 
-			<img class='last_image' id='date_vax_quad_timeline'/>
+			<div class='image_container'>
+				<img class='last_image' id='date_vax_quad_timeline'/>		
+				<button class='animate_image' id='date_vax_quad_timeline' onclick="animate_image(this)">&#x23F5;</button>
+ 			</div>
 
 			<p></p>
 			<p></p>
@@ -353,7 +415,7 @@
 		</div>
 	</div>
 
-	<div id="Tiers" class="tabcontent" >
+	<div id="Tiers" class="tabcontent " >
 		<h2>Distribution of Vaccination Rates by County</h2>
 		<hr><br/>
 		<div class='wrapper'>
@@ -376,7 +438,10 @@
 
 			<p>These plots portray the total outcomes over time by vaccination tier since vaccines were first available. </p>
 
-			<img class='last_image' id='tier_vax_quad_timeline'/>
+			<div class='image_container'>
+				<img class='last_image' id='tier_vax_quad_timeline'/>		
+				<button class='animate_image' id='tier_vax_quad_timeline' onclick="animate_image(this)">&#x23F5;</button>
+ 			</div>
 
 			<p><h3>Vaccination Tiers: Confirmed Cases </h3></p>
 			<br/>

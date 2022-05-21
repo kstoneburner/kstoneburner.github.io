@@ -3,6 +3,8 @@ loop_running = false;
 refresh_rate = 200;
 function init(){
 	
+	document.body.offsetHeight="500px";
+
 	//*** Check that image_paths is fully loaded
 	//*** If not, wait 100ms, run init() again
 	if (typeof image_paths == "undefined") { setTimeout(function(){ console.log("Waiting For image_paths");init() },100); return; }
