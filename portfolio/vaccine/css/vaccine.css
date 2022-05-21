@@ -161,6 +161,7 @@ h4 {margin-bottom: 3px}
   position: fixed; 
   background-color:#ece4d8;  
   border-bottom: 6px solid #7c334f;
+  z-index: 100;
 
 }
 .header_filler {
