@@ -15,8 +15,12 @@
 	<p>By Kurt Stoneburner (March, 2022)</p>
 	<br/><br/>
 	
-	<div style="display:none"><iframe width="873" height="491"></iframe></div>
-<iframe class="player" width="1140" height="641" src="https://www.youtube.com/watch?v=37-W6QI1-Oc" title="YouTube video player" frameborder="0"  allowfullscreen></iframe>
+	<div class="video_container">
+	
+		<iframe class="video" width="654" height="368" src="https://www.youtube.com/embed/37-W6QI1-Oc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+	</div>
+	
 	<h2>Introduction</h2>
 	<hr><br/>
 	<div class='wrapper'>
@@ -134,9 +138,15 @@
 
 		<p>National statistics provide a general outlook for the country. However, outcomes vary greatly by geography. This section explores differences in state outcomes starting with vaccine rollout of 2020-12-18 to 2022-04-22. The result of COVID outcomes are as diverse as the states themselves.</p>
 		<p>These plots are centered around the U.S. mean for each outcome. This is a relative measure of how each state compares to the whole.</p>
-		<img class='last_image' id='state_geo_vax_timeline'/>
+		<div class='image_container'>
+			<img class='last_image' id='state_geo_vax_timeline'/>
+			<button class='animate_image' id='state_geo_vax_timeline' onclick="animate_image(this)">&#x23F5;</button>
+		</div>
 		<p>The west coast and northeast have the highest vaccination rates in the country. The expectation is these states will have better outcomes. That isn’t entirely the case.</p>
-		<img class='last_image' id='state_geo_confirm_timeline'/>
+		<div class='image_container'>
+			<img class='last_image' id='state_geo_confirm_timeline'/>
+			<button class='animate_image' id='state_geo_confirm_timeline' onclick="animate_image(this)">&#x23F5;</button>
+		</div>
 		<p>Case count versus vaccination has mixed results across the entire country. Some states meet expectations and others vary greatly. High Vaccination percentages are not strongly linked to lower cases rates in many states. For Example, Maryland has one of the highest vaccination rates and lowest per capita case rates. Where New York and Rhode Island have similarly high vaccination rates and nearly double the case rates.</p>
 		<table>
 			<tr>
@@ -230,9 +240,15 @@
 			<tr><td></td>    <td></td>     <td></td><td>Pennsylvania</td><td>64.8%</td><td>10,805</td></tr>
 			<tr><td></td>    <td></td>     <td></td><td>New York</td><td>74.9%</td><td>10,419</td></tr>
 		</table>
-		<img class='last_image' id='state_geo_hosp_timeline'/>
-		<img class='last_image' id='state_geo_icu_timeline'/>		
+			<div class='image_container'>
+				<img class='last_image' id='state_geo_hosp_timeline'/>
+				<button class='animate_image' id='state_geo_hosp_timeline' onclick="animate_image(this)">&#x23F5;</button>
+ 			</div>
 
+			<div class='image_container'>
+				<img class='last_image' id='state_geo_icu_timeline'/>		
+				<button class='animate_image' id='state_geo_icu_timeline' onclick="animate_image(this)">&#x23F5;</button>
+ 			</div>
 		<p>Regional differences aside there appears to be strong evidence that higher vaccine rates reduce the incidence of death. The states with the lowest death rates are all above the vaccination national mean, while the lowest vaccinated states have the highest death rates. </p>
 		<p>Conversely, there are only three states with low vaccination rates and low deaths. This is fairly strong evidence that vaccines reduce the death rate.</p>
 		<table>
@@ -279,7 +295,12 @@
 			<tr><td>North Dakota</td>      <td>51.3%</td><td>133</td><td></td>            <td></td>     <td></td></tr>
 			<tr><td>North Carolina</td>    <td>59.2%</td><td>163</td><td></td>            <td></td>     <td></td></tr>
 		</table>
-		<img class='last_image' id='state_geo_death_timeline'/>
+
+			<div class='image_container'>
+				<img class='last_image' id='state_geo_death_timeline'/>
+				<button class='animate_image' id='state_geo_death_timeline' onclick="animate_image(this)">&#x23F5;</button>
+ 			</div>
+	
 	</div>
 
 	<h2>County COVID Characteristics</h2>
@@ -289,24 +310,44 @@
 		<p>County level vaccinations reveals a diversity of vaccination rates within individual states. Urban counties have the highest vaccination rates while rural counties trend lower. The west coast counties and northeast counties exemplify this distribution. This is typified by the highest vaccination rates being the densely populated coastal urban centers, while the relatively rural inland areas have lower vaccination rates.  </p>
 		<p>Many states with low vaccination rates tend to have a few individual counties with high vaccination rates. Counties in West Virgina, Kentucky and Ohio are examples of this pattern.</p>
 
-		<img class='last_image' id='county_geo_vax_timeline'/>
+			
+			<div class='image_container'>
+				<img class='last_image' id='county_geo_vax_timeline'/>		
+				<button class='animate_image' id='county_geo_vax_timeline' onclick="animate_image(this)">&#x23F5;</button>
+ 			</div>
 
 		<p>County level total confirmed case rates appear to have little overall correlation with vaccination rates. </p>
 
-		<img class='last_image' id='county_geo_confirm_timeline'/>
-		
+	
+			<div class='image_container'>
+				<img class='last_image' id='county_geo_confirm_timeline'/>		
+				<button class='animate_image' id='county_geo_confirm_timeline' onclick="animate_image(this)">&#x23F5;</button>
+ 			</div>
+					
 		<p>Hospitalization rates demonstrate that high case rates are focused of a small subset of counties. Hospitalizations appear to be regionally concentrated to relatively few counties where the hardest hit are hit very hard. This implies there is a lack of regional care across many states and demonstrates that medical care is not evenly distributed across the country.</p>
 		
-		<img class='last_image' id='county_geo_hosp_timeline'/>
-		
+			
+			<div class='image_container'>
+				<img class='last_image' id='county_geo_hosp_timeline'/>		
+				<button class='animate_image' id='county_geo_hosp_timeline' onclick="animate_image(this)">&#x23F5;</button>
+ 			</div>
+				
 		<p>There are many counties that do not have access to ICU beds. Like hospitalizations, ICU capacity is focused on much smaller subset of counties. Patients are concentrated within the relatively few counties with intensive care facilities. This is particularly true in the Midwest and South. </p>
 
-		<img class='last_image' id='county_geo_icu_timeline'/>
-		
+
+
+			<div class='image_container'>
+				<img class='last_image' id='county_geo_icu_timeline'/>		
+				<button class='animate_image' id='county_geo_icu_timeline' onclick="animate_image(this)">&#x23F5;</button>
+ 			</div>
+			
 		<p>Like the other data points, deaths tend to track lower with higher vaccinations counts. The low vaccinated states of West Virginia, Kentucky and Ohio do have high death rates. However there are a few counties with low vaccinations rate and low lower death rates, and conversely, high vaccination with high death. </p>
 
-		<img class='last_image' id='county_geo_death_timeline'/>
-		
+
+			<div class='image_container'>
+				<img class='last_image' id='county_geo_death_timeline'/>		
+				<button class='animate_image' id='county_geo_death_timeline' onclick="animate_image(this)">&#x23F5;</button>
+ 			</div>		
 
 	</div>
 
@@ -320,8 +361,10 @@
 
 		<p>The overall death values are promising. There is a clear general trend, that as vaccination increases, total death rates are lower.</p>
 
-		<img class='last_image' id='date_vax_quad_timeline'/>
-
+			<div class='image_container'>
+				<img class='last_image' id='date_vax_quad_timeline'/>		
+				<button class='animate_image' id='date_vax_quad_timeline' onclick="animate_image(this)">&#x23F5;</button>
+ 			</div>
 		<p></p>
 		<p></p>
 
@@ -349,7 +392,11 @@
 
 		<p>These plots portray the total outcomes over time by vaccination tier since vaccines were first available. </p>
 
-		<img class='last_image' id='tier_vax_quad_timeline'/>
+
+			<div class='image_container'>
+				<img class='last_image' id='tier_vax_quad_timeline'/>		
+				<button class='animate_image' id='tier_vax_quad_timeline' onclick="animate_image(this)">&#x23F5;</button>
+ 			</div>
 
 		<p><h3>Vaccination Tiers: Confirmed Cases </h3></p>
 		<br/>

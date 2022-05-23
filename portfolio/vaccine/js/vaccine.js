@@ -3,7 +3,13 @@ loop_running = false;
 refresh_rate = 200;
 function init(){
 	
-	document.body.offsetHeight="500px";
+	
+	elem = document.getElementById("National")
+	console.log(elem.top)
+	console.log(elem.style.offsetTop)
+	elem.style.offsetTop = "1034px"
+
+
 
 	//*** Check that image_paths is fully loaded
 	//*** If not, wait 100ms, run init() again
@@ -57,21 +63,24 @@ function init(){
 function resize_elems(){
 		//*** Rescale Elements to body width. Particularly for the video player(S)
 
-		class_elems = document.getElementsByClassName('player')
+		for (class_name in ['header']){
+			class_elems = document.getElementsByClassName(class_name)
 
 
-		for (var i=0; i < class_elems.length; i++) {
+			for (var i=0; i < class_elems.length; i++) {
 
-			diff =  document.body.offsetWidth / class_elems[i].offsetWidth
+				diff =  document.body.offsetWidth / class_elems[i].offsetWidth
 
-			class_elems[i].offsetWidth = class_elems[i].offsetWidth * diff
-			
-			class_elems[i].style.width = class_elems[i].offsetWidth * diff + 'px'
-			class_elems[i].style.height = class_elems[i].offsetHeight * diff + 'px'
+				class_elems[i].offsetWidth = class_elems[i].offsetWidth * diff
+	
+				class_elems[i].style.width = class_elems[i].offsetWidth * diff + 'px'
+				class_elems[i].style.height = class_elems[i].offsetHeight * diff + 'px'
+				class_elems[i].width = class_elems[i].offsetWidth * diff 
+				class_elems[i].height = class_elems[i].offsetHeight * diff 
 
 
+			}
 		}
-
 }
 
 function openTab(evt, target) {
@@ -94,6 +103,9 @@ function openTab(evt, target) {
   // Show the current tab, and add an "active" class to the button that opened the tab
   document.getElementById(target).style.display = "block";
   evt.currentTarget.className += " active";
+
+  document.body.scrollTop = 0; // For Safari
+  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera 
 } 
 
 //*** Play: Unicode = &#x23F5;
