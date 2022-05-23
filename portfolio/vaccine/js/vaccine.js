@@ -46,9 +46,33 @@ function init(){
 		}
 	}//*** END each animate_image
 
+
+	resize_elems();
 	
-	
+	window.addEventListener('resize', (event) => {
+  	resize_elems();
+	});
 } //*** END Init
+
+function resize_elems(){
+		//*** Rescale Elements to body width. Particularly for the video player(S)
+
+		class_elems = document.getElementsByClassName('player')
+
+
+		for (var i=0; i < class_elems.length; i++) {
+
+			diff =  document.body.offsetWidth / class_elems[i].offsetWidth
+
+			class_elems[i].offsetWidth = class_elems[i].offsetWidth * diff
+			
+			class_elems[i].style.width = class_elems[i].offsetWidth * diff + 'px'
+			class_elems[i].style.height = class_elems[i].offsetHeight * diff + 'px'
+
+
+		}
+
+}
 
 function openTab(evt, target) {
   // Declare all variables
