@@ -4,16 +4,20 @@ refresh_rate = 200;
 function init(){
 	
 	
-	elem = document.getElementById("National")
-	console.log(elem.top)
-	console.log(elem.style.offsetTop)
-	elem.style.offsetTop = "1034px"
 
 
 
 	//*** Check that image_paths is fully loaded
 	//*** If not, wait 100ms, run init() again
 	if (typeof image_paths == "undefined") { setTimeout(function(){ console.log("Waiting For image_paths");init() },100); return; }
+
+	try {
+			elem = document.getElementById("National")
+			console.log(elem.top)
+			console.log(elem.style.offsetTop)
+			elem.style.offsetTop = "1034px"
+	}
+	catch	{}
 
 	image_elems = document.getElementsByClassName('last_image')
 
