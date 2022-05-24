@@ -13,6 +13,7 @@ body {
   overflow-x: hidden;
   color: #707172;
   background-color: #666;
+  
 }
 
 p {
@@ -128,6 +129,8 @@ hr{
 
 .tm-border-gray {
   border-color: #cdcecf;
+  border-color: #cd596b;
+  border-color: #7c334f;
 }
 
 .tm-box-pad {

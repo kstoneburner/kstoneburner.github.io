@@ -1,23 +1,15 @@
 /* XREF Styling */
 body {
-   	   	max-width:1024px; 
+   	   	
+        max-width:1024px; 
 
    	   	font-size: 1.1em;
 
-   	   	background-color:#ece4d8;
+
+
 
 }
 
-hr {
-        
-	background-color:#7c334f;
-    
-    border: none;
-    height: 5px;
-    margin-top:  0px;
-    margin-left: 0px;
-    
-}
 
 /* Classes */
 .wrapper {
@@ -28,3 +20,4 @@ hr {
   	
   	border-style: none none none solid;
 }
+
