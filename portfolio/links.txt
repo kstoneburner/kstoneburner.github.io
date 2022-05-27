@@ -1,0 +1,2 @@
+Billable Hours Project: https://github.com/kstoneburner/DSC/blob/master/DSC530/project/DSC530_Final_Project_Show_The_Work.ipynb
+COVID Racial Data: https://github.com/kstoneburner/DSC/blob/master/DSC550/Project/DSC550_StoneburnerKurt_Milestone_5_v2.ipynb

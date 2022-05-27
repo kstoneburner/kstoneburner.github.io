@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+
+<head>  
+   <link rel="stylesheet" type="text/css" href="css/other.css"/>
+ </head>
+
+<html>
+
+
+<body>
+	<h1>“Checker: Real-Time Data Entry Validation”</h1>
+
+	<h2>Interface Overview</h2>
+	<hr><br/>
+	<div class='wrapper'>
+
+		<p>
+			An essential part of daily newscast production is programming the newscast automation system, Overdrive.  Television news strives to present the most current information on every story. This leads to stories that change and evolve right until they air.  
+		</p>
+		<p>
+			Individual newscasts are a collection of stories organized into a rundown. Typically, (but not always) rundowns are linear, the show starts at the beginning and works through each element in sequence. 
+		</p>
+		<p>
+			Sample Rundown:
+		</p>
+		<img src="img/checker_1_rundown.png">
+		<p>
+			Quick rundown breakdown 
+		</p>
+		<table>
+			<tr>
+				<th> Story #</th>
+				<th>Slug</th>
+				<th>Format</th>
+				<th>Description</th>
+			</tr>
+			<tr>
+				<td>A2</td>
+				<td>OPEN BABBA SOLUTIONS</td>
+				<td>SOT</td>
+				<td>Sound on tape, take the show open full no other audio is open</td>
+			</tr>
+			<tr>
+				<td>A3</td>
+				<td>5PCOLDOPEN1</td>
+				<td>SOTVO</td>
+				<td> Sound on Tape for 12 seconds, then DAN will read a script.</td>
+			</tr>
+			<tr>
+				<td>A4</td>
+				<td>5P HELLO FRAMES</td>
+				<td>FR 1-1</td>
+				<td>Both Anchors in 1-1 boxes (COVID Protocol, they sit across the studio from each other). They introduce the show.  </td>
+			</tr>
+			<tr>
+				<td>A5</td>
+				<td>BUG</td>
+				<td></td>
+				<td>Add the Time and Temperature Bug</td>
+			</tr>
+			<tr>
+				<td>A6</td>
+				<td>5P CNN TEXAS SCHOOL PKG</td>
+				<td>PKG</td>
+				<td> 5P CNN TEXAS SCHOOL PKG</td>
+			</tr>
+			<tr>
+				<td>A7</td>
+				<td>5P VICTIM CROSSES OC</td>
+				<td>FR 1-2</td>
+				<td>Take KSZ (Anchor2) in 1-2 Boxes (little box, bigger box), See KSZ in left box (with her Mic), Video in Right Box (With low audio to hear natural sound).</td>
+			</tr>
+			<tr>
+				<td>A8</td>
+				<td>5P VICTIMS FS</td>
+				<td>FS</td>
+				<td>KSZ talks over Fullscreen graphic. </td>
+			</tr>
+			<tr>
+				<td>A9</td>
+				<td>5P new TX WIDOWER VO</td>
+				<td>VO</td>
+				<td>KSZ reads over Video, using her microphone and Natural Sound from the video.</td>
+			</tr>
+			<tr>
+				<td>A10</td>
+				<td>5P DOMESTIC TERRORISM OC</td>
+				<td>OC</td>
+				<td>DAN Reads On Camera</td>
+			</tr>
+			<tr>
+				<td>A11</td>
+				<td>5P DOMESTIC TERRORISM VO</td>
+				<td>VO</td>
+				<td>DAN reads over video, using his microphone and Natural Sound from the video.</td>
+			</tr>
+		</table>
+	</div>
+	<h2>Director’s Job </h2>
+	<hr><br/>
+	<div class='wrapper'>
+		<p>
+			The Director airs the newscast and is entirely responsible for the technical execution of the show. Production duties revolve around two distinct aspects: 
+		</p>
+		<ul>
+			<li><strong>Automation Programming</strong>: Falls under the general heading of show preparation.</li>
+			<li><strong>Show Execution</strong>: Managing all aspects of the broadcast in real-time.</li>
+		</ul>
+		<p>
+			This solution focuses on enhancing show preparation accuracy and efficiency.  
+		</p>
+	</div>
+	<h2>Are the codes right? </h2>
+	<hr><br/>
+	<div class='wrapper'>
+		<p>
+			The coding process is 100% dependent on the director entering the correct Overdrive codes and ensuring the codes are updated as the show changes. In many shows there is an additional constraint of not being able to check the coding ahead of time. In those cases, the director must perform data entry with 100% accuracy. 
+		</p>
+		<p>
+			For Example:
+		</p>
+		<img src="img/checker_2_code_example.png">
+		<p>
+			If the rundown indicates DAN OC, then the script should contain a code that places the Anchor On Camera. 
+		</p>
+		<p>
+			The basic logic equates to if condition AND NOT condition THEN Display Error.  
+		</p>
+	</div>
+	<h2>WebMOS to the Rescue</h2>
+	<hr><br/>
+	<div class='wrapper'>
+		<p>
+			WebMOS was originally used to present real-time scripts to talent in an iPad Browser. WebMOS is a server that essentially converts a CMS XML stream to XML. All information that the CMS delivers is available to a browser via a WebMOS HTML. 
+		</p>
+		<p>
+			One disadvantage of the Dalet CMS is that it does not provide MOS objects (Overdrive Codes) to WebMOS. The Dalet MOS protocol only supported delivering scripts. This problem was overcome by adding a post XML update SQL query. For every XML story update, WebMOS performs an SQL query requesting the Overdrive XML Objects directly from the CMS database. The query results are appended to individual stories and pushed to the clients.
+		</p>
+		<p>
+			This enables a Javascript based solution designed to validate newscast production codes in real-time.  
+		</p>
+	</div>
+
+	<h2>Universal Rules Based Templating</h2>
+	<hr><br/>
+	<div class='wrapper'>
+		<p>
+			Hard coding a series of rules is a straightforward process. However, it delegates the responsibility of maintaining the ruleset to those who understand the programming language. The real challenge is creating a rule-based system that any user can use in the browser. 
+		</p>
+		<p>
+			Like this: 
+		</p>
+		<img src="img/checker_4_rules_main.png">
+		<p>
+			This page defines all the logic behind validating Overdrive codes. The primary logic is divided between the Qualifier and the Denominator. 
+		</p>
+
+		<p>
+			The qualifier is a set of logic indicating a story type. In this example, the qualifier is a set of rules to determine if a story indicates ANCHOR on camera. 
+		</p>
+		<img src="img/checker_5_rules_qualify.png">
+		<p>
+			Logic Breakdown:
+		</p>
+		<table>
+			<tr>
+				<th>Logic</th>
+				<th>Field</th>
+				<th>Evaluator</th>
+				<th>Test</th>
+			</tr>
+			<tr>
+				<td></td>
+				<td>Anchor</td>
+				<td>CONTAINS</td>
+				<td>[ANC] (Special Keyword that designates the Anchor Talent Initals) </td>
+			</tr>
+			<tr>
+				<td>AND</td>
+				<td>format</td>
+				<td>BEGINSWITH</td>
+				<td>OC</td>
+			</tr>
+			<tr>
+				<td>AND</td>
+				<td>Stage_Notes</td>
+				<td>DOES_NOT_CONTAIN</td>
+				<td>3M OR BAM OR INT OR TRAF OR TFK OR ADH OR SCS</td>
+			</tr>
+		</table>
+		<p>
+			The logic can be a little confusing when you start mixing AND NOT OR statements, but it is logical. If each of the statements is true then the story is deemed to be an Anchor OnCam story.  
+		</p>
+		<p>
+			The logic proceed to the Validate ruleset 
+		</p>
+		<img src="img/checker_6_rules_qualify.png">
+		<p>
+			If the validate logic evaluates True, then the appropriate coding exists. If the logic evaluates False, then an error message is displayed. 
+		</p>
+		<p>
+			The logic breaks down like this:
+		</p>
+		<table>
+			<tr>
+				<th>Logic</th>
+				<th>Field</th>
+				<th>Evaluator</th>
+				<th>Test</th>
+			</tr>
+			<tr>
+				<td></td>
+				<td>Ross-ClipValue</td>
+				<td>CONTAINS</td>
+				<td>IGNITE:ANCHOR</td>
+			</tr>
+			<tr>
+				<td>OR</td>
+				<td>Ross-ClipValue</td>
+				<td>CONTAINS</td>
+				<td>IGNITE:ANC CU</td>
+			</tr>
+			<tr>
+				<td>OR</td>
+				<td>Ross-ClipValue</td>
+				<td>CONTAINS</td>
+				<td>IGNITE:4 ZOOM</td>
+			</tr>
+			<tr>
+				<td>OR</td>
+				<td>Ross-shotName</td>
+				<td>CONTAINS</td>
+				<td>Nemo 11</td>
+			</tr>
+		</table>
+	</div>
+	<h2>Easy Rulebuilding</h2>
+	<hr><br/>
+	<div class='wrapper'>
+		<p>
+			All fields are accessible via a dropdown in the field column, the logic is also selectable via a dropdown, and the test field is an input field. Once a rule is updated, the user presses the SAVE button which updates a JSON file on the server. Otherwise, the code is entirely managed in the browser. Once a change is made, the user refreshes the client and tests the error logic. Repeat as needed to create a functioning rule. 
+		</p>
+		<p>
+			An uncoded rundown generates a raft of errors that look like this. 
+		</p>
+
+		<img src="img/checker_7_errors.png"  class="medium_image">
+	</div>
+	<h2>Real-Time Solution</h2>
+	<hr><br/>
+	<div class='wrapper'>
+		<p>
+			As the show changes, Checker errors update automatically. Shows changes are required to be brought to the director’s attention. Sometimes, they are not. Checker provides an advisory for the most common mistakes be they data entry or simple lapses in communication. 
+		</p>
+
+	
+</body>
+</html>
+

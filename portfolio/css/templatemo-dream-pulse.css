@@ -700,3 +700,12 @@ figure.effect-bubba:hover p {
     padding: 50px 30px;
   }
 }
+
+.more {
+  color : red;
+  font-style: italic;
+}
+
+.toggle {
+  display : none;
+}

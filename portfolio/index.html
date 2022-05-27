@@ -18,6 +18,16 @@ https://templatemo.com/tm-536-dream-pulse
     <link rel="stylesheet" href="css/magnific-popup.css">
     <link rel="stylesheet" href="css/templatemo-dream-pulse.css" />
 
+    <script>
+      function toggleChild(self){
+        const collection = self.children;
+        console.log(collection)
+          for (let i = 0; i < collection.length; i++) {
+            collection[i].style.display = "inline-block";
+            
+          }
+      }
+    </script>
   </head>
   <body>
     <main class="container-fluid">
@@ -49,19 +59,19 @@ https://templatemo.com/tm-536-dream-pulse
 
                 <li class="nav-item">
                   <a href="#lstm_project" class="nav-link">
-                    <span class="d-inline-block mr-5 sb-smaller-text">Stock Prediction Framework</span>
+                    <span class="d-inline-block mr-3 sb-smaller-text">Stock Prediction</span>
                     <span class="d-inline-block tm-white-rect"></span>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="#covid_project" class="nav-link">
-                    <span class="d-inline-block mr-3 sb-smaller-text">COVID Profile: <br/> Vaccination vs. Outcomes </span>
+                    <span class="d-inline-block mr-3 sb-smaller-text">COVID Outcome Profiles</span>
                     <span class="d-inline-block tm-white-rect"></span>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="#covid_dashboard" class="nav-link">
-                    <span class="d-inline-block mr-3 sb-smaller-text">COVID Dashboard [November 2021]</span>
+                    <span class="d-inline-block mr-3 sb-smaller-text">COVID Dashboard</span>
                     <span class="d-inline-block tm-white-rect"></span>
                   </a>
                 </li>
@@ -73,7 +83,7 @@ https://templatemo.com/tm-536-dream-pulse
                 </li>
 
                 <div><hr class="hr-text" data-content="Work"></div>
-                <div class="nav-section">Solutions</div>
+                <div class="nav-section">Innovation</div>
                 <div><hr class="hr-text" data-content="Work"></div>
 
                 <li class="nav-item">
@@ -229,18 +239,21 @@ https://templatemo.com/tm-536-dream-pulse
                         <h2 class="tm-color-primary tm-section-title mb-4">
                         <a href="https://kstoneburner.github.io/DSC640/covid_dash_v1.html"> “COVID Dashboard [November 2021].”
                         <p></p>
-                        <img src="" class="img-rounded col-xl-12">
+                        <img src="img/dashboard_cover.jpg" class="img-rounded col-xl-12">
                         </a>
                       </h2>
                         <p class="mb-4">
-                          COVID Dashboard featuring interactive bokeh plots. Be sure to checkout the "Explore the Spread" section that features an interactive timeline of COVID spread.                          
+                          COVID Dashboard featuring interactive bokeh plots. Be sure to checkout the "Explore the Spread" section that features an interactive timeline of COVID spread.              
                         </p>
                     </div>                    
                   </div>                  
                 </div>
 
               </section>
-          </div>          
+          </div>
+
+
+     
   
           <div class="tm-section-wrap bg-white">
             <section id="fcc_project" class="row tm-section">
@@ -267,6 +280,27 @@ https://templatemo.com/tm-536-dream-pulse
               </section>
           </div>
           <div class="tm-section-wrap bg-white">
+            <section id="html_scripts" class="row tm-section">
+                <div class="col-xl-12 mb-5">
+                  <div class="tm-double-border-1 tm-border-gray">
+                    <div class="tm-double-border-2 tm-border-gray tm-box-pad">
+                        <h2 class="tm-color-primary tm-section-title mb-4">
+                        <a href="other_projects/webmos_scripts.html"> Real-Time Script Solution
+                        <p></p>
+                        <img src="other_projects/img/webmos_script_sample_small.jpg" class="img-rounded col-xl-12">
+                        </a>
+                      </h2>
+                        <p class="mb-4">
+                          WebMOS is a custom full stack solution designed to replace paper scripts with a browser-based solution at five ABC Owned & Operated Television Stations. This solution streamlines the production process by completely removing the infrastructure and inefficiencies surrounding single use paper scripts.  
+                        </p>
+                    </div>                    
+                  </div>                  
+                </div>
+
+              </section>
+          </div>
+
+          <div class="tm-section-wrap bg-white">
             <section id="fcc_project" class="row tm-section">
                 <div class="col-xl-12 mb-5">
                   <div class="tm-double-border-1 tm-border-gray">
@@ -290,8 +324,46 @@ https://templatemo.com/tm-536-dream-pulse
 
               </section>
           </div>
+          <div class="tm-section-wrap bg-white">
+            <section id="autohotkey" class="row tm-section">
+                <div class="col-xl-12 mb-5">
+                  <div class="tm-double-border-1 tm-border-gray">
+                    <div class="tm-double-border-2 tm-border-gray tm-box-pad">
+                        <h2 class="tm-color-primary tm-section-title mb-4">
+                        <a href="other_projects/autohotkey.html"> “Improving Pre-Production Efficiency with Autohotkey”
+                        <p></p>
+                        <img src="other_projects/img/ahk_5_layout.png" class="img-rounded col-xl-12">
+                        </a>
+                      </h2>
+                        <p class="mb-4">
+                          Reduce pre-production data entry time by 20% by converting a drag-and-drop workflow to keystrokes using an extensive library of custom Autohotkey macros.
+                        </p>
+                    </div>                    
+                  </div>                  
+                </div>
 
+              </section>
+          </div>
+          <div class="tm-section-wrap bg-white">
+            <section id="checker" class="row tm-section">
+                <div class="col-xl-12 mb-5">
+                  <div class="tm-double-border-1 tm-border-gray">
+                    <div class="tm-double-border-2 tm-border-gray tm-box-pad">
+                        <h2 class="tm-color-primary tm-section-title mb-4">
+                        <a href="other_projects/checker.html"> Checker: Real-Time Data Entry Validation
+                        <p></p>
+                        <img src="other_projects/img/checker_z_main_pic.png" class="img-rounded col-xl-12">
+                        </a>
+                      </h2>
+                        <p class="mb-4">
+                          Industry defying data validation tools unique to the production. Real-time browser based and unser configurable  data validation tools based on the WebMOS platform.
+                        </p>
+                    </div>                    
+                  </div>                  
+                </div>
 
+              </section>
+          </div>
           <div class="tm-section-wrap bg-white">
             <section id="archives" class="row tm-section">
                 <div class="col-xl-12 mb-5">
