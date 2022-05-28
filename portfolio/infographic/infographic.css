@@ -1,0 +1,89 @@
+
+.slidecontainer {
+  width: 100%; /* Width of the outside container */
+}
+
+/* The slider itself */
+.slider {
+  
+  /* -webkit-appearance: none;  /* Override default CSS styles */
+  appearance: none;
+  width: 100%; /* Full-width */
+  height: 25px; /* Specified height */
+  background: #d3d3d3; /* Grey background */
+  outline: none; /* Remove outline */
+  opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+  -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+  transition: opacity .2s;
+  outline : 2px solid black;
+}
+
+/* Mouse-over effects */
+.slider:hover {
+  opacity: 1; /* Fully shown on mouse-over */
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #04AA6D; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+
+.slider::-moz-range-thumb {
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #04AA6D; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+} 
+
+#table_container {
+  width : 100%;
+  display : inline-block;
+
+  vertical-align: baseline; /* 2 */
+
+}
+
+#table_container div {
+  padding-right:  100px;
+  padding-left:  100px;
+
+}
+
+#table_container td
+{
+    text-align: center; 
+    vertical-align: middle;
+    padding-right:  5px;
+    padding-left:  5px;
+    padding-top:  1px;
+    padding-bottom:  1px;
+}
+
+.header {
+  text-align: left;
+  font-size : 1.25em;
+}
+
+#myChart{
+    display: inline-block; /* 1 */
+  vertical-align: baseline; /* 2 */
+
+}
+
+
+.Date { display: none }
+.tier { display : inline }
+.Population { display : none }
+.tot_confirm { display : none }
+.tot_deaths { display : none }
+.New_Confirm { display : none }
+.New_Deaths { display : none }
+.case_100k_avg_daily { display : none }
+.death_100k_avg_daily { display : none }
+.relative_death_100k { display : none }
+.relative_confirm_100k { display : none }

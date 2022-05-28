@@ -1,0 +1,119 @@
+<!-- https://www.d3-graph-gallery.com/graph/choropleth_basic.html -->
+<!-- https://eric.clst.org/tech/usgeojson/ -->
+
+<!DOCTYPE html>
+<meta charset="utf-8">
+          
+<!-- Load d3.js -->
+ 
+<script src="https://d3js.org/d3.v6.js"></script>
+<script src = "http://d3js.org/topojson.v0.min.js"></script>
+
+
+<!-- https://d3-geomap.github.io/ -->
+    
+    
+  <!--   <script src="https://kstoneburner.github.io/DSC640/wk09_10/d3-geomap/d3-geomap.min.js"></script> -->
+
+<!-- Create an element where the map will take place -->
+<svg id="my_dataviz" width="400" height="300"></svg>
+  <div id="content">
+    <canvas id="map" width="800" height="400"></canvas>
+  </div>
+<style>
+   path {
+      stroke: white;
+      stroke-width: 0.5px;
+      fill: grey;
+   }
+   
+   .stateTN { fill: red; }
+   .stateAP { fill: blue; }
+   .stateMP{ fill: green; }
+</style>
+<script>
+
+
+//let projection = d3.geoMercator();
+/*
+let projection = d3.geoEquirectangular();
+
+*/
+/*
+// The svg
+const svg = d3.select("svg"),
+  width = +svg.attr("width"),
+  height = +svg.attr("height");
+
+
+d3.json("https://kstoneburner.github.io/DSC640/wk09_10/counties-albers-10m.json")
+.then(function(geojson){
+let u = d3.select('#content g.map')
+  .selectAll('path')
+  .data(geojson.features)
+  .join('path')
+  .attr('d', geoGenerator);
+
+
+
+});
+  */
+
+/*
+let projection = d3.geoEquirectangular();
+
+let geoGenerator = d3.geoPath()
+  .projection(projection);
+
+d3.json("https://kstoneburner.github.io/DSC640/wk09_10/counties-albers-10m.json")
+.then(function(geojson){
+let u = d3.select('#content g.map')
+  .selectAll('path')
+  .data(geojson.features)
+  .join('path')
+  .attr('d', geoGenerator);
+});
+*/
+
+var map = d3.geomap()
+    .geofile('https://kstoneburner.github.io/DSC640/wk09_10/d3-geomap/topojson/world/countries.json')
+    .draw(d3.select('#map'));
+/*
+let geojson = {}
+
+let context = d3.select('#content canvas')
+  .node()
+  .getContext('2d');
+
+let projection = d3.geoEquirectangular()
+  .scale(300);
+
+let geoGenerator = d3.geoPath()
+  .projection(projection)
+  .pointRadius(4)
+  .context(context);
+
+
+// REQUEST DATA
+d3.json("https://kstoneburner.github.io/DSC640/wk09_10/gz_2010_us_states_5m.json")
+
+  .then(function(json) {
+  geojson = json;
+var map = d3.choropleth()
+    .geofile('/d3-geomap/topojson/countries/USA.json')
+    .projection(d3.geoAlbersUsa)
+    .column('2012')
+    .unitId('fips')
+    .scale(1000)
+    .legend(true);
+
+  console.log(geojson)
+  map.draw(d3.select('#content'));
+  //window.setInterval(update, 100);
+})
+*/
+  
+
+
+
+</script>

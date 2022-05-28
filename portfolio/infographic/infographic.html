@@ -1,0 +1,82 @@
+<!-- https://dev.to/drews256/ridiculously-easy-row-and-column-layouts-with-flexbox-1k01-->
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="infographic.css">
+<link rel="stylesheet" href="other.css">
+<script src="chart.min.js" ></script>
+<script src="infographic.js" ></script>
+<script src='infographic_left.js'></script>
+<script src="js/image_paths.js"></script>
+<script src="js/vaccine.js"></script>
+
+<!-- <script src='infographic_right.js'></script> -->
+<!-- <script src='d3.v6.min.js'></script> -->
+<meta charset="utf-8">
+<body style=" max-width: 1900px;">
+
+
+
+	 
+
+
+	<script>
+		init()
+	</script>
+<h2>Explore COVID Over Time</h2>
+<hr><br/>
+<div class='wrapper'>
+	<img id="current_vax_img" src="z_blog_natl_county_vax.jpg" width="100%"class='image' >
+	<div id="intro_text">
+		<p>This is the current state of vaccination in the United States. If each county was grouped together by vaccination rates. How would these counties fare throughout the pandemic?</p>
+		<p>Move the slider to see how COVID affected these counties throughout the pandemic. Vaccines weren't deployed till the start of 2021 and didn't see significant vaccination levels till March 2021. Until then, COVID affected all counties similarly. After the COVID surge of July 2021, the affects of vaccines can be seen especially in death rates.</p>
+		<span style="font-size: 1.2em"><strong>Move the Slider to See daily COVID data throughout the pandemic.</strong></span>
+	</div>
+	<div id='main_container'>
+		<div class="slidecontainer">
+			<input type="range" min="0" max="100" value="0" class="slider" id="myRange" onload="buildSlider()" oninput="handleSlider()" >
+		</div>
+		<div id="header">X</div>
+
+		<div style="display:inline-flex; height=600px" width=100% > 
+			<img id=confirm_jpg src="infographic_gifs\confirm_hist_1.jpg" width=33%>
+			<img id=death_jpg src="infographic_gifs\death_hist_1.jpg" width=33%>
+			<img id=vax_jpg src="infographic_gifs\vax_hist_312.jpg" width=33%>
+		</div>
+				<div style="display:inline-flex;" width=100%>
+			<div id="table_container"></div>
+			<div style="transform: translateY(25%);">
+				<p>These tiers represent different parts of the country based on current vaccination rates.</p>
+			</div>
+
+			<div ><canvas id="confirm_chart" ></canvas></div>
+			<div ><canvas id="death_chart" ></canvas></div>
+
+		</div>
+		<div style="display:inline-flex;" width=100%> 
+			
+			
+		</div>
+	</div>
+</div>	
+<div>
+	<p>Sources:</p>
+ <li>
+ 	<a href="https://github.com/CSSEGISandData/COVID-19" target="_blank" rel="noopener noreferrer">John's Hopkins COVID-19 Site</a>
+ </li>
+ <li>
+ 	<a href="https://github.com/CSSEGISandData/COVID-19/raw/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_US.csv" target="_blank" rel="noopener noreferrer">John's Hopkins COVID-19 COVID Data </a>
+ </li>
+ <li>
+	 <a href="https://data.cdc.gov/Vaccinations/COVID-19-Vaccinations-in-the-United-States-Jurisdi/unsk-b7fc" target="_blank" rel="noopener noreferrer">Current CDC Vaccination Data by State </a>
+ </li>
+ <li>
+	 <a href="https://github.com/kstoneburner/DSC/blob/master/DSC640/DSC640_Dashboard_COVID_v5_Working.ipynb" target="_blank" rel="noopener noreferrer">Juypter Notebook Code HERE!</a>
+ </li>
+
+</div>
+
+ 
+</body>
+
+
+</html>
