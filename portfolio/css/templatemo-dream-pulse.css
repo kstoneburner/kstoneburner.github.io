@@ -15,7 +15,9 @@ body {
   background-color: #666;
   
 }
-
+.head_text {
+  color:  red;
+}
 p {
   line-height: 2;
 }
@@ -42,6 +44,7 @@ hr{
 
 .tm-color-primary {
   color: #069;
+  color: #7c334f;
 }
 
 .tm-color-gray {
