@@ -1,0 +1,174 @@
+<!-- https://dev.to/drews256/ridiculously-easy-row-and-column-layouts-with-flexbox-1k01-->
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="utf-8">
+<body>
+	<link rel="stylesheet" href="css/vaccine_state_results.css"> 
+	<div style='background-color: #644ac6; 
+				width: 100%; 
+				display: inline-block';
+				>
+		<span>
+		<div ><img src="bellevue_header.jpg" style='margin-top: 20px; margin-bottom: 20px; margin-left: 20px;'></div>
+		<div>
+
+			<div style="font-size: 1.5em; margin-top: 10px; color:white; margin-left: 20px;  margin-bottom: 20px; ">
+				DSC640-T301: Data Presentation and Visualization<br/>
+				Bellevue University<br/>
+				Professor Catherine Williams
+			</div>
+		</div>
+		</span>
+	</div>
+	<div>
+
+	<h1>
+		Week 05/06<br/>
+	</h1>
+	<h2>
+		Exercise 3.3: Project Task 2: Executive Summary<br/>
+		Author: Kurt Stoneburner
+	</h2>
+	</div>
+	<div id='main_container'>
+		<div>
+			<h1>Current COVID Vaccine Efficacy Rates</h1>
+			<h3>Vaccines save lives</h3>
+			<p>Higher vaccination rates greatly improve outcomes compared to lower vaccination states</p>
+			<div class="high_points">
+				<ul>
+				<li><strong>$$fewer_cases_percent$$</strong> lower transmission rate</li>
+				<li><strong>$$fewer_death_percent$$</strong> fewer deaths</li>
+				</ul>
+			</div>
+
+			<!-- <div>$$summary_table$$</div> -->
+		</div>
+
+		<img src="z_exec_summary_binned_vax_map.jpg" class="image_75" >
+	</div>
+	<div class='flex_container'>
+
+	    <div class='row'>
+		    
+		    <div class='column'>
+		     
+		        The majority of the US population lives in a state with a fully vaccinated rate of 50-60%. Vaccination rates amongst the states are roughly normally distributed.  
+		     </div>
+		    
+		    <div class='column2'>
+		      	<img src="z_exec_summary_vax_distribution.jpg" class='image' >
+		    </div>
+		
+		</div>
+		
+
+	</div>
+
+	<div class='flex_container'>
+		<div class='row'>
+		    <div class='column'>
+		     
+		        <p>Vaccination does slow the spread of new infections. There is a significant difference in COVID prevalence between the states with lowest and highest vaccination rates. These numbers are measured from July 1st, 2021 to the present. This is the start of the summer surge, COVID rates were low and vaccines were deployed in significant numbers.</p> 
+				<p>The States with lowest vaccinations had a COVID prevalence of <strong>$$confirm_high$$</strong> cases per 100k compared to <strong>$$confirm_low$$</strong> cases per 100k. This is a <strong>$$fewer_cases_percent$$</strong> reduction in COVID cases.</p> 
+		      </div>
+		  
+		    <div class='column2'>
+		      	<img src="z_exec_summary_summer_covid_rates.jpg" class='image'>
+		    </div>
+		</div>
+	</div>
+
+	<div class='flex_container'>
+		<div class='row'>
+		    <div class='column'>
+		     
+		        <p>Vaccines save lives!</p>
+		        <br/>
+
+				<p>COVID death prevalence is reduced by  <strong>$$fewer_death_percent$$</strong> in the highest vaccinated states: <strong>$$deaths_high$$</strong> Deaths (per 100k) compared to <strong>$$deaths_low$$</strong> Deaths (per 100k). </p> 
+
+		      </div>
+		  
+		    <div class='column2'>
+		      	<img src="z_exec_summary_summer_death_rates.jpg" class='image'>
+		    </div>
+		</div>
+	</div>
+
+	<div class='flex_container'>
+		<div class='row'>
+		    <div class='column'>
+		     
+		        <p>Relative vaccine uptake shows high initial vaccination rates across most states followed by a lower linear rate. This indicates relatively low but steady vaccination rates will continue. Policies that promote vaccination must be pursued.  </p> 
+
+		      </div>
+		  
+		    <div class='column2'>
+		      	<img src="z_exec_summary_total_vax_rates.jpg" class='image'>
+		    </div>
+		</div>
+	</div>
+
+	<div class='flex_container'>
+		<div class='row'>
+		    <div class='column'>
+		     
+		        <p>Each band represents the relative rates of COVID transmission. In January 2021, the bands are of roughly equal size. This indicates a generally equal distribution of COVID throughout the country. This was the tail end of a major COVID surge. These bands remain roughly similar till July 2021. Overall COVID rates were low and vaccination rates were climbing strongly. In response, mask mandates eased across the country just as the more virulent Delta variant became dominant. These factors combined with slowing vaccination rates lead to another COVID surge.</p>
+		        <p>After July 2021, there is quite a difference in COVID rates between the highest and lowest vaccinated states.</p> 
+
+		      </div>
+		  
+		    <div class='column2'>
+		      	<img src="z_exec_summary_relative_covid_rates_by_vax.jpg" class='image'>
+		    </div>
+		</div>
+	</div>
+
+	<div class='flex_container'>
+		<div class='row'>
+		    <div class='column'>
+		     
+		        <p>Death rates follow a similar pattern to COVID transmission rates. At the start of the year, death rates are similar. During the summer surge the lowest vaccinated states have death rates like January 2021. .</p> 
+
+		      </div>
+		  
+		    <div class='column2'>
+		      	<img src="z_exec_summary_relative_death_rates_by_vax.jpg" class='image'>
+		    </div>
+		</div>
+	</div>
+
+	<div>
+	<h3>Results</h3>
+
+
+	<p>This is a high level (statewide) overview of vaccine efficacy. Vaccines save lives and protect the public health.</p>
+
+	<h3>Further Action</h3>  
+
+	<p>Follow-up studies should include outcomes for hospitalization rates. Statewide analysis may be overly broad since county vaccination rates may vary greatly throughout a state. Further studies should group counties together by vaccination rates and the outcomes should be measured.</p> 
+	</div>
+
+<div>
+	<p>Sources:</p>
+ <li>
+ 	<a href="https://github.com/CSSEGISandData/COVID-19" target="_blank" rel="noopener noreferrer">John's Hopkins COVID-19 Site</a>
+ </li>
+ <li>
+ 	<a href="https://github.com/CSSEGISandData/COVID-19/raw/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_US.csv" target="_blank" rel="noopener noreferrer">John's Hopkins COVID-19 COVID Data </a>
+ </li>
+ <li>
+	 <a href="https://data.cdc.gov/Vaccinations/COVID-19-Vaccinations-in-the-United-States-Jurisdi/unsk-b7fc" target="_blank" rel="noopener noreferrer">Current CDC Vaccination Data by State </a>
+ </li>
+ <li>
+	 <a href="https://github.com/kstoneburner/DSC/blob/master/DSC640/DSC640_Dashboard_COVID_v3.ipynb" target="_blank" rel="noopener noreferrer">Juypter Notebook Code HERE!</a>
+ </li>
+
+</div>
+
+ 
+</body>
+
+
+</html>

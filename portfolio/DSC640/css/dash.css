@@ -1,0 +1,137 @@
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+/* Style the buttons that are used to open the tab content */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+
+  color: #fff !important;
+  /* text-transform: uppercase; */
+  text-decoration: none;
+  background: #4CAF50;
+  /* padding: 20px; */
+  border-radius: 30px;
+  display: inline-block;
+  border: none;
+   transition: all 0.4s ease 0s; 
+}
+
+.tab button:hover {
+  background: #434343;
+  /* letter-spacing: 1px; */
+  -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+  -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+  box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
+  /* transition: all 0.4s ease 0s; */
+}
+
+/* Change background color of buttons on hover */
+/* .tab button:hover {
+  background-color: #ddd;
+}
+*/
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+} 
+
+/* Style The Dropdown Button */
+.dropbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px;
+  /* font-size: 16px; */
+  border: none;
+  cursor: pointer;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 10;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+
+/* Links inside the dropdown */
+.dropdown-content div {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content div:hover {background-color: #f1f1f1}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+  background-color: #3e8e41;
+}
+
+
+.dd_historical {
+  display : none;
+}
+
+
+
+#total_confirmed_percent {
+  /* height: 512px; */
+  height: 256px;
+  overflow: scroll;
+  /* float: right; */
+
+}
+
+
+
+#total_confirmed_percent tr:nth-child(odd) {  background-color:#f2f2f2;}
+
+#confirm_animation {font-size: 100pt}
+
+#confirm_historical {
+  outline: 3px solid #4CAF50;
+}
+#death_historical {
+  outline: 3px solid #4CAF50;
+}
+
+.drag_slider{
+  margin-top: 20px ;
+  margin-bottom: 20px;
+  
+}

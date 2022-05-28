@@ -1,0 +1,160 @@
+<!-- https://www.w3schools.com/howto/howto_js_tabs.asp -->
+<!DOCTYPE html>
+<html>
+<body>
+<h3>COVID-19 Dashboard</h3>
+<!-- <p>Measuring COVID-19 Community Prevalence by mapping new the number of new confirmed cases per 100,000 people</p> -->
+<!-- <button class="tablinks"><img src="confirm_100k_thumb.gif" height="30", width="60"></button> -->
+<meta charset="utf-8">
+
+<link rel="stylesheet" href="css/dash.css"> 
+
+<script src="js/dash.js"></script>
+<script src="https://cdn.bokeh.org/bokeh/release/bokeh-2.4.0.min.js"></script>
+<script src="https://cdn.bokeh.org/bokeh/release/bokeh-gl-2.4.0.min.js"></script>
+<script src="https://cdn.bokeh.org/bokeh/release/bokeh-widgets-2.4.0.min.js"></script>
+<script src="https://cdn.bokeh.org/bokeh/release/bokeh-tables-2.4.0.min.js"></script>
+<script src="https://cdn.bokeh.org/bokeh/release/bokeh-mathjax-2.4.0.min.js"></script>
+
+<div class="tab">
+
+  <button class="tablinks" onclick="openCity(event, 'Vaccination')">Vaccinations</button>
+  <button class="tablinks" onclick="openCity(event, 'Confirmed')">Confirmed</button>
+  <button class="tablinks" onclick="openCity(event, 'Deaths')">Deaths</button> 
+  <button class="tablinks" onclick="openCity(event, 'Historical')" style="text-align:top;">Explore the Spread</button>
+
+  
+</div>
+<!-- Tab content -->
+<div id="Vaccination" class="tabcontent" style="display:block;">
+
+	<table>
+		<tr>
+			<td>
+				<div id='covid_graph_wrapper_1' >$$vaccine_us_current$$</div>				
+			</td>
+			<td>
+				<table>
+					<tr>
+						<td>
+							Vaccinated:
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Fully:
+						</td>
+						<td>
+							$$total_vaccinated_percent$$
+						</td>
+						<td>
+							[ $$total_vaccinated_count$$ ]
+						</td>
+
+					</tr>
+					<tr>
+						<td>
+							First Dose:
+						</td>
+						<td>
+							$$first_dose_percent$$
+						</td>
+						<td>
+							[ $$first_dose_count$$ ]
+						</td>
+					</tr>
+
+				</table>
+				<div>
+							<div id='vax_full_30day'>$$vax_full_30day$$</div>				
+							<div id='vax_partial_30day'>$$vax_partial_30day$$</div>				
+				</div>
+			</td>
+		</tr>
+	</table>
+</div>
+<div id="Confirmed" class="tabcontent active" >
+<table>
+	<tr>
+			<td>
+				<div id='confirm_latest'>$$confirm_latest$$</div>				
+			</td>
+			<td>
+        		  <div id='states_highests_new_cases'>$$states_highests_new_cases$$</div>
+        		 </br>
+ 			  	<div>States with the highest total COVID prevalence</div>
+				<div id='total_confirmed_percent'>$$total_confirmed_percent$$</div>
+		   </td>
+		</tr>
+</table>
+</div>
+
+<div id="Deaths" class="tabcontent">
+	<table>
+			<tr>
+			<td>
+				<div id='states_highests_new_deaths'>$$states_highests_new_deaths$$</div>
+			</td>
+			<td>
+				<div id='death_latest'>$$death_latest$$</div>
+				<div id='us_new_deaths'>$$us_new_deaths$$</div>
+			</td>
+		</tr>
+	</table>
+
+
+</div>
+
+<div id="Historical" class="tabcontent">
+<div class="dropdown">
+  <button class="dropbtn">Select Visualization...</button>
+  <div class="dropdown-content">
+    <div onclick="showHistorical(event, 'confirm_historical')">Confirmed Cases Spread</div>
+    <div onclick="showHistorical(event, 'death_historical')">Death Cases Spread</div>
+    <div onclick="showHistorical(event, 'confirm_animation')">Confirmed Case Animation</div>
+    <div onclick="showHistorical(event, 'death_animation')">New Deaths Animation</div>
+  </div>
+  <div class='drag_slider '>Drag the Slider</div>
+</div>
+	<table>
+		<tr>
+			<td>
+				<div id='confirm_historical' class='dd_historical' style='display: inline;'>$$confirm_historical$$</div>				
+			</td>
+			<td>
+				<div id='death_historical' class='dd_historical'>$$death_historical$$</div>
+			</td>
+			<td>
+				<div id='confirm_animation' class='dd_historical' style='display: unloaded;'>Click to Load....</div>
+			</td>
+			<td>
+				<div id='death_animation' class='dd_historical' style='display: unloaded;'>Click to Load....</div>
+			</td>
+		</tr>
+	</table>
+</div>
+
+
+<div>
+	<p>Sources:</p>
+ <li>
+ 	<a href="https://github.com/CSSEGISandData/COVID-19" target="_blank" rel="noopener noreferrer">John's Hopkins COVID-19 Site</a>
+ </li>
+ <li>
+ 	<a href="https://github.com/CSSEGISandData/COVID-19/raw/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_US.csv" target="_blank" rel="noopener noreferrer">John's Hopkins COVID-19 COVID Data </a>
+ </li>
+ <li>
+	 <a href="https://www.census.gov/data/datasets/time-series/demo/popest/2010s-counties-detail.html" target="_blank" rel="noopener noreferrer">U.S. Census Bureau: County Population by Characteristics: 2010-2019</a>
+ </li>
+ <li>
+	 <a href="https://github.com/kstoneburner/DSC/blob/master/DSC640/DSC640_Dashboard_COVID_v2.ipynb" target="_blank" rel="noopener noreferrer">Juypter Notebook Code HERE!</a>
+ </li>
+
+</div>
+
+
+ 
+</body>
+
+
+</html>
