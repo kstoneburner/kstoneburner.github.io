@@ -5,10 +5,7 @@ DREAM PULSE
 https://templatemo.com/tm-536-dream-pulse
 
 */
-/* Smartphones ----------- */
-@media only screen and (max-width: 760px) {
-  #container-fluid { display: none; }
-}
+
 body {
   font-family: "Open Sans", Arial, Helvetica, sans-serif;
   font-size: 18px;
@@ -18,9 +15,7 @@ body {
   background-color: #666;
   
 }
-.head_text {
-  color:  red;
-}
+
 p {
   line-height: 2;
 }
@@ -47,7 +42,6 @@ hr{
 
 .tm-color-primary {
   color: #069;
-  color: #7c334f;
 }
 
 .tm-color-gray {
@@ -293,17 +287,26 @@ hr{
   .tm-gallery-wrap {
     max-width: 780px;
   }
+  .tm-intro {
+    max-width: 80%;
+  }
 }
 
 @media (max-width: 1200px) {
   .tm-gallery-wrap {
     max-width: 520px;
   }
+  .tm-intro {
+    max-width: 100%;
+  }
 }
 
 @media (max-width: 991px) {
   .tm-gallery-wrap {
     max-width: 780px;
+  }
+  .tm-intro {
+    max-width: 100%;
   }
 }
 
