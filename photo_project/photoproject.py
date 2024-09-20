@@ -1,5 +1,6 @@
 import os
 import json
+from PIL import Image
 
 permObj = {
 	"template_name" : "project.type.json",
@@ -8,6 +9,7 @@ permObj = {
 	"default_header" : "Images",
 	"default_title" : "",
 	"default_text" : "",
+	"resize_percent" : .25,
 	"valid_image_types" : [".jpg"],
 	"img_template" : "<img src=\"%%image_path%%\" width=\"100%\" alt=\"Picture\">"
 }
@@ -92,6 +94,13 @@ for dir_elem in scan_obj:
 					#//*** Move to Next Folder
 					continue
 
+
+				#//*** Build low Res images if needed
+				lowres_dir = elem_dir + "/lowres"
+				if not (os.path.isdir(lowres_dir)):
+					os.makedirs(lowres_dir)
+
+
 				image_html = ""
 
 				images_dir = elem_dir + "/images"
@@ -113,13 +122,35 @@ for dir_elem in scan_obj:
 									continue
 
 							if isValid:
-								html_image_path = "images/"
+
+								#//*** Build Low Res Image
+
+
+								html_image_path = images_dir + "/"
+
+								hires_image_path = html_image_path+filename
+								lowres_image_path = elem_dir + "/lowres/"+filename
+
+								hires_html_path = "images/"+filename
+								lowres_html_path = "lowres/"+filename
+
+								#//*** Build the Low Resolution image if it doesn't exist
+								if not os.path.isfile(lowres_image_path):
+									with Image.open(hires_image_path) as im:
+										width, height = im.size
+										resized_dimensions = (int(width * permObj["resize_percent"]), int(height * permObj["resize_percent"]))
+
+										resized = im.resize(resized_dimensions)
+										print("Resizing: "+lowres_image_path)
+										resized.save(lowres_image_path)	
+
+								#out_image = permObj["img_template"]
+								#out_image = out_image.replace("%%image_path%%",hires_html_path)
+								#image_html += "\t" + out_image + "\n"
 
 								out_image = permObj["img_template"]
-
-								out_image = out_image.replace("%%image_path%%",html_image_path+filename)
+								out_image = out_image.replace("%%image_path%%",lowres_html_path)
 								image_html += "\t" + out_image + "\n"
-
 
 
 						else:
