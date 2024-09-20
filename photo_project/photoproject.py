@@ -156,7 +156,7 @@ for dir_elem in scan_obj:
 						else:
 							print("Skipping File: " + full_filepath)
 						#print( str(os.path.isfile(filename)) + " " + filename)
-
+				print(image_html)
 				#//*** Replace Values in ihe HTML Template
 				out_html = out_html.replace("%%title%%",project_info["title"])
 				out_html = out_html.replace("%%header%%",project_info["header"])
