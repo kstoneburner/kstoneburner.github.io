@@ -11,7 +11,8 @@ permObj = {
 	"default_text" : "",
 	"resize_percent" : .25,
 	"valid_image_types" : [".jpg"],
-	"img_template" : "<img src=\"%%image_path%%\" width=\"100%\" alt=\"Picture\">"
+	#"img_template" : "<img src=\"%%image_path%%\" width=\"100%\" alt=\"Picture\">",
+	"img_template" : "<a href=\"%%hires_image_path%%\"><img src=\"%%lowres_image_path%%\" width=\"100%\" alt=\"Picture\"></a>"
 }
 
 #//*** Scan sub folders for Projects to build
@@ -149,7 +150,8 @@ for dir_elem in scan_obj:
 								#image_html += "\t" + out_image + "\n"
 
 								out_image = permObj["img_template"]
-								out_image = out_image.replace("%%image_path%%",lowres_html_path)
+								out_image = out_image.replace("%%lowres_image_path%%",lowres_html_path)
+								out_image = out_image.replace("%%hires_image_path%%",hires_html_path)
 								image_html += "\t" + out_image + "\n"
 
 
@@ -160,7 +162,7 @@ for dir_elem in scan_obj:
 				#//*** Replace Values in ihe HTML Template
 				out_html = out_html.replace("%%title%%",project_info["title"])
 				out_html = out_html.replace("%%header%%",project_info["header"])
-				out_html = out_html.replace("%%text%%",project_info["text"])
+				out_html = out_html.replace("%%text%%","<p>"+project_info["text"]+"</p>")
 				out_html = out_html.replace("%%images%%",image_html)
 				
 				filename = elem_dir+"/"+permObj["html_name"] 
